@@ -61,7 +61,7 @@ ROBOTS = {
         'JUMP_PENALTY_WEIGHT': 0.1,     # Penalize excessive vertical velocity
         'HIGH_ALTITUDE_PENALTY_WEIGHT': 0.1,  # Penalize staying too high above ground
         'ORIENTATION_REWARD_WEIGHT': 1.0,  # Reward for matching target orientation
-        'ACTION_LIMIT': 0.75, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
+        'ACTION_LIMIT': 0.5, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
         'INITIAL_MOMENTUM': 1.0,  # Scale of random initial momentum at start of episode (0.0 to 1.0)
         'TARGET_HEIGHT': 0.5,  # Target height for the arachne to maintain
     }
