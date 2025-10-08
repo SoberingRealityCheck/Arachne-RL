@@ -108,6 +108,27 @@ class VisualizationEnv(BaseEnv):
         orient_line_id = p.addUserDebugLine(start_pos, orient_end_pos, [0, 1, 0], 3)  # Green line (thicker)
         self.debug_lines.append(orient_line_id)
 
+        # Get current velocity and orientation of the bot
+        current_linear_vel, current_angular_vel = p.getBaseVelocity(self.robot_id)
+        current_pos, current_orientation_quat = p.getBasePositionAndOrientation(self.robot_id)
+        
+        # Draw current velocity vector (dark red: [0.5, 0, 0])
+        current_vel_end_pos = [current_pos[0] + current_linear_vel[0] * velocity_scale,
+                               current_pos[1] + current_linear_vel[1] * velocity_scale,
+                               current_pos[2]]
+        current_vel_line_id = p.addUserDebugLine(current_pos, current_vel_end_pos, [0.5, 0, 0], 3)  # Dark red line
+        self.debug_lines.append(current_vel_line_id)
+        
+        # Draw current orientation vector (dark green: [0, 0.5, 0])
+        # Extract yaw angle from quaternion
+        current_euler = p.getEulerFromQuaternion(current_orientation_quat)
+        current_yaw = current_euler[2]  # z-axis rotation (yaw)
+        current_orient_end_pos = [current_pos[0] + orient_length * np.cos(current_yaw),
+                                  current_pos[1] + orient_length * np.sin(current_yaw),
+                                  current_pos[2]]
+        current_orient_line_id = p.addUserDebugLine(current_pos, current_orient_end_pos, [0, 0.5, 0], 3)  # Dark green line
+        self.debug_lines.append(current_orient_line_id)
+
         return super().step(action)
 
 
