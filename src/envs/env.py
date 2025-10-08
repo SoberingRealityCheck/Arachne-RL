@@ -126,9 +126,9 @@ class BaseEnv(gym.Env):
                  lateralFriction=0.8)
 
         start_orientation = p.getQuaternionFromEuler([0, 0, 0])
-        self.start_position = start_position
+        self.start_position = self.START_POSITION if self.START_POSITION !=0 else start_position
         self.robot_id = p.loadURDF(self.urdf_filename, self.start_position, start_orientation, useFixedBase=False,flags=p.URDF_USE_INERTIA_FROM_FILE)
-        
+
         base_pos, _ = p.getBasePositionAndOrientation(self.robot_id)
         self.start_position = base_pos
         self.joint_limit = 1.57
@@ -179,13 +179,13 @@ class BaseEnv(gym.Env):
         # Define the size of our observation space based on several components:
         # 1. Joint positions and velocities (2 values per joint)
         # 2. Base position (3), 
-        # 3. Orientation (4), 
+        # 3. Orientation (4 - quaternion), 
         # 4. Linear velocity (3), 
         # 5. Angular velocity (3),
         # 6. Cosine and Sine of joint angles (2 values per joint)
         # 7. Control Goal Velocity (3 values: x,y,z components)
-        # 8. Control Goal Orientation (3 values: x,y,z components of a unit vector in the desired yaw direction)
-        obs_space_shape = (num_joints * 4) + 13 + 3 + 3
+        # 8. Control Goal Orientation (4 values: quaternion x,y,z,w)
+        obs_space_shape = (num_joints * 4) + 13 + 3 + 4
         self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(obs_space_shape,), dtype=np.float32)
 
     def _get_obs(self):
@@ -230,9 +230,10 @@ class BaseEnv(gym.Env):
         return np.array([speed * np.cos(angle), speed * np.sin(angle), 0])
 
     def generate_random_orientation_vector(self):
-        ''' Generates a random orientation command (yaw angle in radians between -pi and pi) '''
+        ''' Generates a random orientation command as a quaternion (yaw angle in radians between -pi and pi) '''
         theta = np.random.uniform(-np.pi, np.pi)
-        return [math.cos(theta), math.sin(theta), 0]
+        # Return as quaternion [x, y, z, w] representing rotation around Z axis
+        return [0, 0, math.sin(theta/2), math.cos(theta/2)]
     
     def generate_random_initial_momentum(self, strength):
         ''' Generates a random initial momentum vector in the x-y plane with a magnitude up to 'strength' '''
@@ -310,33 +311,61 @@ class BaseEnv(gym.Env):
 
         # velocity commands
         target_angular_vel = np.array([0,0,0])
-        target_z = self.start_position[2]
+        target_z = self.TARGET_HEIGHT if self.TARGET_HEIGHT else self.start_position[2]
 
-        ## Reward Components: ##
-        # 1. Linear Velocity Tracking Reward
-        r_lin_vel = np.exp(-np.linalg.norm(np.array(base_vel) - np.array(target_vel))**2)
-        # 2. Angular Velocity Tracking Reward
-        r_ang_vel = np.exp(-np.linalg.norm(np.array(base_angular_vel) - np.array(target_angular_vel))**2 )
-        # 3. Height Penalty
-        r_height = -(current_base_pos[2] - target_z)**2
-        # 4. Pose Similarity Penalty
-        joint_states = p.getJointStates(self.robot_id, self.joint_indices)
-        joint_positions = np.array([state[0] for state in joint_states])
-        r_pose = -(np.linalg.norm(joint_positions - np.array(self.home_position))**2)
-        # 5. Action Rate Penalty
-        r_action_rate = -np.linalg.norm(action-self.previous_action)**2
-        # 6. Vertical Velocity Penalty
-        r_lin_vel_z = -base_vel[2]**2
-        # 7. Roll and Pitch Penalty
+        ## Check if fallen ##
         rot_matrix = p.getMatrixFromQuaternion(current_base_orient)
         z_direction = np.array([rot_matrix[6], rot_matrix[7], rot_matrix[8]])
         if not (0.99<np.linalg.norm(z_direction) < 1.01):
             raise ValueError("Z direction vector is not normalized!")
-        r_rp = -(1 - z_direction[2])  # Not the same as the penalty described in the blog, but approximately the same when the robot is almost upright.
+        uprightness = z_direction[2]
+        is_fallen = current_base_pos[2] < 0.1 or uprightness < 0.5
+
+        ## Extract yaw angles from quaternions for orientation tracking ##
+        # Current yaw: extract from current_base_orient quaternion [x, y, z, w]
+        # Using formula: yaw = atan2(2*(w*z + x*y), 1 - 2*(y^2 + z^2))
+        qx, qy, qz, qw = current_base_orient
+        current_yaw = math.atan2(2.0 * (qw * qz + qx * qy), 1.0 - 2.0 * (qy**2 + qz**2))
+        
+        # Target yaw: extract from target_orientation quaternion [x, y, z, w]
+        target_orient = self.target_orientation
+        tx, ty, tz, tw = target_orient
+        target_yaw = math.atan2(2.0 * (tw * tz + tx * ty), 1.0 - 2.0 * (ty**2 + tz**2))
+        
+        # Calculate yaw error (wrap to [-pi, pi])
+        yaw_error = current_yaw - target_yaw
+        yaw_error = math.atan2(math.sin(yaw_error), math.cos(yaw_error))  # Wrap to [-pi, pi]
+
+        ## Reward Components: ##
+        # 1. Linear Velocity Tracking Reward - SCALED UP to dominate!
+        r_lin_vel = 10.0 * np.exp(-np.linalg.norm(np.array(base_vel) - np.array(target_vel))**2)
+        # 2. Angular Velocity Tracking Reward
+        r_ang_vel = np.exp(-np.linalg.norm(np.array(base_angular_vel) - np.array(target_angular_vel))**2 )
+        # 3. Height Penalty - reduced weight
+        r_height = -0.1 * (current_base_pos[2] - target_z)**2
+        # 4. Pose Similarity Penalty - REDUCED to allow movement!
+        joint_states = p.getJointStates(self.robot_id, self.joint_indices)
+        joint_positions = np.array([state[0] for state in joint_states])
+        r_pose = -0.01 * (np.linalg.norm(joint_positions - np.array(self.home_position))**2)
+        # 5. Action Rate Penalty - REDUCED to allow dynamic gaits!
+        r_action_rate = -0.001 * np.linalg.norm(action-self.previous_action)**2
+        # 6. Vertical Velocity Penalty - reduced
+        r_lin_vel_z = -0.1 * base_vel[2]**2
+        # 7. Roll and Pitch Penalty
+        r_rp = -(1 - uprightness)  # Penalty for not being upright
+        # 8. Survival Reward - CRITICAL: Incentivize staying alive!
+        r_survival = self.SURVIVAL_WEIGHT * steps_taken if not is_fallen else 0.0
+        # 9. Fallen Penalty - CRITICAL: Severe penalty for falling!
+        r_fallen = -self.FALLEN_PENALTY if is_fallen else 0.0
+        # 10. Orientation Tracking Reward - Match target yaw angle
+        # Use exponential reward: max reward (1.0) when yaw_error = 0, decays with error
+        r_orientation = self.ORIENTATION_REWARD_WEIGHT * np.exp(-(yaw_error**2))
 
         ## Calculate total reward:
-        total_reward = (r_lin_vel+r_ang_vel+ r_height + r_pose + r_action_rate + r_lin_vel_z + r_rp)
+        total_reward = (r_lin_vel + r_ang_vel + r_height + r_pose + r_action_rate + r_lin_vel_z + 
+                       r_rp + r_survival + r_fallen + r_orientation)
         return total_reward
+    
     def calculate_step_reward(self, action, steps_taken=0):
         ''' 
         This function is run for each physics step to calculate the reward earned by the robot during that step.

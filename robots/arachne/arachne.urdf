@@ -1,0 +1,1503 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/6d2de7d00083ca907fc2babe/w/304502f29ec410dd09729b69/e/1a771d50b15e1c926d9bfb2b -->
+<robot name="arachne">
+  <!-- Link lowerbody -->
+  <link name="lowerbody">
+    <inertial>
+      <origin xyz="-0.0540356 -0.0172819 -0.02284" rpy="0 0 0"/>
+      <mass value="0.776148"/>
+      <inertia ixx="0.00347337" ixy="-1.33678e-06" ixz="-2.85786e-08" iyy="0.00268241" iyz="-5.69255e-06" izz="0.00596839"/>
+    </inertial>
+    <!-- Part lowerbody -->
+    <visual>
+      <origin xyz="-0.054048 -0.00137342 -0.0313015" rpy="-3.14159 -1.58122e-14 -2.01699e-27"/>
+      <geometry>
+        <mesh filename="package://assets/lowerbody.stl"/>
+      </geometry>
+      <material name="lowerbody_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.054048 -0.00137342 -0.0313015" rpy="-3.14159 -1.58122e-14 -2.01699e-27"/>
+      <geometry>
+        <mesh filename="package://assets/lowerbody.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part upperbody -->
+    <visual>
+      <origin xyz="-0.316404 -0.0374887 -0.0213015" rpy="1.36938e-27 -1.58122e-14 -2.01699e-27"/>
+      <geometry>
+        <mesh filename="package://assets/upperbody.stl"/>
+      </geometry>
+      <material name="upperbody_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.316404 -0.0374887 -0.0213015" rpy="1.36938e-27 -1.58122e-14 -2.01699e-27"/>
+      <geometry>
+        <mesh filename="package://assets/upperbody.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler -->
+    <visual>
+      <origin xyz="0.0448815 0.0747041 0.18291" rpy="-3.14159 1.43937e-14 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0448815 0.0747041 0.18291" rpy="-3.14159 1.43937e-14 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_2 -->
+    <visual>
+      <origin xyz="-0.150443 -0.00554233 0.18291" rpy="-3.14159 -1.58122e-14 -3.89288e-15"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.150443 -0.00554233 0.18291" rpy="-3.14159 -1.58122e-14 -3.89288e-15"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_3 -->
+    <visual>
+      <origin xyz="-0.143501 0.0940223 0.18291" rpy="-3.14159 -1.43307e-14 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.143501 0.0940223 0.18291" rpy="-3.14159 -1.43307e-14 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_4 -->
+    <visual>
+      <origin xyz="0.0269595 -0.122635 0.18291" rpy="3.14159 1.23128e-14 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0269595 -0.122635 0.18291" rpy="3.14159 1.23128e-14 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_5 -->
+    <visual>
+      <origin xyz="0.0422868 -0.0267405 0.18291" rpy="3.14159 1.58129e-14 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0422868 -0.0267405 0.18291" rpy="3.14159 1.58129e-14 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_6 -->
+    <visual>
+      <origin xyz="-0.148603 -0.105946 0.18291" rpy="3.14159 -1.24067e-14 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.148603 -0.105946 0.18291" rpy="3.14159 -1.24067e-14 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r -->
+    <visual>
+      <origin xyz="0.0220999 0.0754833 -0.0113015" rpy="6.54567e-15 1.43937e-14 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0220999 0.0754833 -0.0113015" rpy="6.54567e-15 1.43937e-14 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns -->
+    <visual>
+      <origin xyz="0.0312028 0.0796229 0.00594854" rpy="-1.5708 2.09797e-15 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0312028 0.0796229 0.00594854" rpy="-1.5708 2.09797e-15 -2.71479"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_2 -->
+    <visual>
+      <origin xyz="-0.130028 -0.0156824 -0.0113015" rpy="1.46066e-27 -1.58122e-14 -3.89288e-15"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.130028 -0.0156824 -0.0113015" rpy="1.46066e-27 -1.58122e-14 -3.89288e-15"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_2 -->
+    <visual>
+      <origin xyz="-0.140028 -0.0156824 0.00594854" rpy="-1.5708 -1.75355e-16 -8.38581e-15"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.140028 -0.0156824 0.00594854" rpy="-1.5708 -1.75355e-16 -8.38581e-15"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_3 -->
+    <visual>
+      <origin xyz="-0.129284 0.0762044 -0.0113015" rpy="6.6825e-15 -1.43307e-14 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.129284 0.0762044 -0.0113015" rpy="6.6825e-15 -1.43307e-14 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_3 -->
+    <visual>
+      <origin xyz="-0.138347 0.0804306 0.00594854" rpy="-1.5708 7.69581e-15 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.138347 0.0804306 0.00594854" rpy="-1.5708 7.69581e-15 -0.436332"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_4 -->
+    <visual>
+      <origin xyz="0.0174242 -0.10193 -0.0113015" rpy="-9.92068e-15 1.23128e-14 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0174242 -0.10193 -0.0113015" rpy="-9.92068e-15 1.23128e-14 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_4 -->
+    <visual>
+      <origin xyz="0.0252111 -0.108204 0.00594854" rpy="-1.5708 3.08939e-15 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0252111 -0.108204 0.00594854" rpy="-1.5708 3.08939e-15 2.46337"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_5 -->
+    <visual>
+      <origin xyz="0.0219689 -0.0164065 -0.0113015" rpy="-1.5065e-16 1.58129e-14 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0219689 -0.0164065 -0.0113015" rpy="-1.5065e-16 1.58129e-14 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_5 -->
+    <visual>
+      <origin xyz="0.0319685 -0.0165017 0.00594854" rpy="-1.5708 -3.06292e-15 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0319685 -0.0165017 0.00594854" rpy="-1.5708 -3.06292e-15 3.13207"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_6 -->
+    <visual>
+      <origin xyz="-0.126298 -0.101246 -0.0113015" rpy="-9.80292e-15 -1.24067e-14 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.126298 -0.101246 -0.0113015" rpy="-9.80292e-15 -1.24067e-14 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_6 -->
+    <visual>
+      <origin xyz="-0.134145 -0.107445 0.00594854" rpy="-1.5708 5.2737e-16 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.134145 -0.107445 0.00594854" rpy="-1.5708 5.2737e-16 0.668693"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link hip -->
+  <link name="hip">
+    <inertial>
+      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+    </inertial>
+    <!-- Part hip -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.14941e-17 -4.42385e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.14941e-17 -4.42385e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_7 -->
+    <visual>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_7_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_7 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_7_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_7 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.2367e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_7_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.2367e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia -->
+  <link name="tibia">
+    <inertial>
+      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="7.43363e-19" iyy="9.74814e-05" iyz="6.53219e-19" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia -->
+    <visual>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 2.62926e-14 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 2.62926e-14 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur -->
+  <link name="femur">
+    <inertial>
+      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+    </inertial>
+    <!-- Part femur -->
+    <visual>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.88775e-14 -2.49801e-15 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.88775e-14 -2.49801e-15 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_8 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.61433e-14 5.8207e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_8_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.61433e-14 5.8207e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_8 -->
+    <visual>
+      <origin xyz="0.01 3.8719e-15 -0.0184" rpy="2.51941e-15 5.88803e-14 3.26009e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_8_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 3.8719e-15 -0.0184" rpy="2.51941e-15 5.88803e-14 3.26009e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_8 -->
+    <visual>
+      <origin xyz="2.77556e-17 6.93889e-18 -0.00115" rpy="-1.5708 -2.34685e-17 -1.21229e-16"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_8_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="2.77556e-17 6.93889e-18 -0.00115" rpy="-1.5708 -2.34685e-17 -1.21229e-16"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia to femur -->
+  <joint name="femur_r1" type="revolute">
+    <origin xyz="-0.12216 -0.0444626 -3.45557e-15" rpy="-3.14159 1.8554e-14 0.959931"/>
+    <parent link="tibia"/>
+    <child link="femur"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.5099e-14" upper="2.18166"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip to tibia -->
+  <joint name="tibia_r1" type="revolute">
+    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
+    <parent link="hip"/>
+    <child link="tibia"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-2.22045e-15" upper="1.22173"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip -->
+  <joint name="hip_r1" type="revolute">
+    <origin xyz="0.0252111 -0.108204 0.00709854" rpy="3.14159 3.08939e-15 2.46337"/>
+    <parent link="lowerbody"/>
+    <child link="hip"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Link hip_2 -->
+  <link name="hip_2">
+    <inertial>
+      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+    </inertial>
+    <!-- Part hip_2 -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -7.323e-18 -2.45118e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -7.323e-18 -2.45118e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_9 -->
+    <visual>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_9_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_9 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_9_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_9 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.11844e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_9_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.11844e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia_2 -->
+  <link name="tibia_2">
+    <inertial>
+      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="1.17027e-20" iyy="9.74814e-05" iyz="1.15897e-21" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia_2 -->
+    <visual>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 3.92633e-16 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 3.92633e-16 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur_2 -->
+  <link name="femur_2">
+    <inertial>
+      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+    </inertial>
+    <!-- Part femur_2 -->
+    <visual>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.56481e-14 -2.61427e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_2_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.56481e-14 -2.61427e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_10 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81991e-14 2.91261e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_10_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81991e-14 2.91261e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_10 -->
+    <visual>
+      <origin xyz="0.01 3.02189e-15 -0.0184" rpy="2.61427e-14 5.56472e-14 3.54012e-15"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_10_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 3.02189e-15 -0.0184" rpy="2.61427e-14 5.56472e-14 3.54012e-15"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_10 -->
+    <visual>
+      <origin xyz="0 -2.94903e-17 -0.00115" rpy="-1.5708 1.51234e-18 6.5352e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_10_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -2.94903e-17 -0.00115" rpy="-1.5708 1.51234e-18 6.5352e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia_2 to femur_2 -->
+  <joint name="femur_r2" type="revolute">
+    <origin xyz="-0.12216 -0.0444626 -1.38778e-17" rpy="-3.14159 1.60405e-14 0.959931"/>
+    <parent link="tibia_2"/>
+    <child link="femur_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="0" upper="2.18166"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip_2 to tibia_2 -->
+  <joint name="tibia_r2" type="revolute">
+    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
+    <parent link="hip_2"/>
+    <child link="tibia_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="0" upper="1.22173"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip_2 -->
+  <joint name="hip_r2" type="revolute">
+    <origin xyz="0.0319685 -0.0165017 0.00709854" rpy="3.14159 -3.06292e-15 3.13207"/>
+    <parent link="lowerbody"/>
+    <child link="hip_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Link hip_3 -->
+  <link name="hip_3">
+    <inertial>
+      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+    </inertial>
+    <!-- Part hip_3 -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.23269e-15 7.76784e-15"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.23269e-15 7.76784e-15"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_11 -->
+    <visual>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_11_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_11 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_11_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_11 -->
+    <visual>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.7487e-14 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_11_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.7487e-14 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia_3 -->
+  <link name="tibia_3">
+    <inertial>
+      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="-2.22231e-19" iyy="9.74814e-05" iyz="-1.14541e-19" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia_3 -->
+    <visual>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 -7.02658e-15 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 -7.02658e-15 -2.79253"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur_3 -->
+  <link name="femur_3">
+    <inertial>
+      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+    </inertial>
+    <!-- Part femur_3 -->
+    <visual>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="1.28331e-13 1.22672e-13 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_3_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="1.28331e-13 1.22672e-13 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_12 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.80331e-15 -1.53595e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_12_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.80331e-15 -1.53595e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_12 -->
+    <visual>
+      <origin xyz="0.01 2.85969e-15 -0.0184" rpy="-1.22718e-13 1.28222e-13 -6.73326e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_12_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 2.85969e-15 -0.0184" rpy="-1.22718e-13 1.28222e-13 -6.73326e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_12 -->
+    <visual>
+      <origin xyz="2.77556e-17 1.73472e-17 -0.00115" rpy="-1.5708 -6.40153e-17 -6.0049e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_12_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="2.77556e-17 1.73472e-17 -0.00115" rpy="-1.5708 -6.40153e-17 -6.0049e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia_3 to femur_3 -->
+  <joint name="femur_r3" type="revolute">
+    <origin xyz="-0.12216 -0.0444626 8.60423e-16" rpy="3.14159 -1.93599e-14 0.959931"/>
+    <parent link="tibia_3"/>
+    <child link="femur_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="0" upper="2.18166"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip_3 to tibia_3 -->
+  <joint name="tibia_r3" type="revolute">
+    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
+    <parent link="hip_3"/>
+    <child link="tibia_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-2.35367e-14" upper="1.22173"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip_3 -->
+  <joint name="hip_r3" type="revolute">
+    <origin xyz="0.0312028 0.0796229 0.00709854" rpy="3.14159 2.09797e-15 -2.71479"/>
+    <parent link="lowerbody"/>
+    <child link="hip_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Link hip_4 -->
+  <link name="hip_4">
+    <inertial>
+      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+    </inertial>
+    <!-- Part hip_4 -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.62629e-18 2.24931e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.62629e-18 2.24931e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_13 -->
+    <visual>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_13_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_13 -->
+    <visual>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_13_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_13 -->
+    <visual>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_13_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia_4 -->
+  <link name="tibia_4">
+    <inertial>
+      <origin xyz="0.065 1.9082e-17 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="3.51253e-05" ixy="3.98817e-21" ixz="-2.43036e-21" iyy="0.000105742" iyz="7.42309e-21" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia_4 -->
+    <visual>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -4.81887e-18 -3.73944e-17"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -4.81887e-18 -3.73944e-17"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur_4 -->
+  <link name="femur_4">
+    <inertial>
+      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+    </inertial>
+    <!-- Part femur_4 -->
+    <visual>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 7.10171e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_4_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 7.10171e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_14 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56671e-13 -1.38427e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_14_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56671e-13 -1.38427e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_14 -->
+    <visual>
+      <origin xyz="0.01 -3.81639e-16 -0.0184" rpy="7.0894e-14 1.24143e-13 8.98493e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_14_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 -3.81639e-16 -0.0184" rpy="7.0894e-14 1.24143e-13 8.98493e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_14 -->
+    <visual>
+      <origin xyz="0 -6.93889e-18 -0.00115" rpy="-1.5708 4.10379e-17 4.14286e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_14_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -6.93889e-18 -0.00115" rpy="-1.5708 4.10379e-17 4.14286e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia_4 to femur_4 -->
+  <joint name="femur_l1" type="revolute">
+    <origin xyz="0.13 -2.77556e-17 -3.1225e-17" rpy="-3.14159 1.19807e-14 2.53073"/>
+    <parent link="tibia_4"/>
+    <child link="femur_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-2.18166" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip_4 to tibia_4 -->
+  <joint name="tibia_l1" type="revolute">
+    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 -3.14159"/>
+    <parent link="hip_4"/>
+    <child link="tibia_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.22173" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip_4 -->
+  <joint name="hip_l1" type="revolute">
+    <origin xyz="-0.134145 -0.107445 0.00709854" rpy="3.14159 5.2737e-16 0.668693"/>
+    <parent link="lowerbody"/>
+    <child link="hip_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Link hip_5 -->
+  <link name="hip_5">
+    <inertial>
+      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+    </inertial>
+    <!-- Part hip_5 -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.12323e-17 1.10913e-13"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.12323e-17 1.10913e-13"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_15 -->
+    <visual>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_15_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_15 -->
+    <visual>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_15_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_15 -->
+    <visual>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_15_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia_5 -->
+  <link name="tibia_5">
+    <inertial>
+      <origin xyz="0.065 2.42861e-17 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="3.51253e-05" ixy="2.58088e-21" ixz="-6.48363e-36" iyy="0.000105742" iyz="-1.04715e-35" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia_5 -->
+    <visual>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 6.90995e-32 4.45385e-18"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 6.90995e-32 4.45385e-18"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur_5 -->
+  <link name="femur_5">
+    <inertial>
+      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+    </inertial>
+    <!-- Part femur_5 -->
+    <visual>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_5_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_16 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.88068e-13 3.0343e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_16_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.88068e-13 3.0343e-13"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_16 -->
+    <visual>
+      <origin xyz="0.01 2.13024e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_16_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 2.13024e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_16 -->
+    <visual>
+      <origin xyz="0 -2.77556e-17 -0.00115" rpy="-1.5708 1.01384e-30 4.78344e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_16_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -2.77556e-17 -0.00115" rpy="-1.5708 1.01384e-30 4.78344e-17"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia_5 to femur_5 -->
+  <joint name="femur_l2" type="revolute">
+    <origin xyz="0.13 0 3.46945e-17" rpy="3.14159 8.05484e-15 2.53073"/>
+    <parent link="tibia_5"/>
+    <child link="femur_5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-2.18166" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip_5 to tibia_5 -->
+  <joint name="tibia_l2" type="revolute">
+    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 -3.14159"/>
+    <parent link="hip_5"/>
+    <child link="tibia_5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.22173" upper="1.11022e-15"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip_5 -->
+  <joint name="hip_l2" type="revolute">
+    <origin xyz="-0.140028 -0.0156824 0.00709854" rpy="-3.14159 -1.75355e-16 -8.38581e-15"/>
+    <parent link="lowerbody"/>
+    <child link="hip_5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Link hip_6 -->
+  <link name="hip_6">
+    <inertial>
+      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
+      <mass value="0.0877468"/>
+      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+    </inertial>
+    <!-- Part hip_6 -->
+    <visual>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 6.84438e-16 -3.31541e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+      <material name="hip_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 6.84438e-16 -3.31541e-14"/>
+      <geometry>
+        <mesh filename="package://assets/hip.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_17 -->
+    <visual>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_17_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_17 -->
+    <visual>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_17_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_17 -->
+    <visual>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_17_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tibia_6 -->
+  <link name="tibia_6">
+    <inertial>
+      <origin xyz="0.065 -9.54098e-18 0.0229759" rpy="0 0 0"/>
+      <mass value="0.0478411"/>
+      <inertia ixx="3.51253e-05" ixy="6.51605e-22" ixz="1.6536e-21" iyy="0.000105742" iyz="-7.74112e-21" izz="7.14134e-05"/>
+    </inertial>
+    <!-- Part tibia_6 -->
+    <visual>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -6.36804e-18 -2.22749e-17"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+      <material name="tibia_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -6.36804e-18 -2.22749e-17"/>
+      <geometry>
+        <mesh filename="package://assets/tibia.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link femur_6 -->
+  <link name="femur_6">
+    <inertial>
+      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
+      <mass value="0.163879"/>
+      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+    </inertial>
+    <!-- Part femur_6 -->
+    <visual>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 1.46841e-13 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+      <material name="femur_6_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 1.46841e-13 -1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/femur.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part idler_18 -->
+    <visual>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70523e-13 -5.13794e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+      <material name="idler_18_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70523e-13 -5.13794e-14"/>
+      <geometry>
+        <mesh filename="package://assets/idler.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part e07_mg996r_18 -->
+    <visual>
+      <origin xyz="0.01 2.09555e-15 -0.0184" rpy="1.46866e-13 6.95944e-14 7.80493e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+      <material name="e07_mg996r_18_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.01 2.09555e-15 -0.0184" rpy="1.46866e-13 6.95944e-14 7.80493e-14"/>
+      <geometry>
+        <mesh filename="package://assets/e07_mg996r.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part servo_horns_18 -->
+    <visual>
+      <origin xyz="0 6.93889e-18 -0.00115" rpy="-1.5708 1.56028e-17 -1.27132e-16"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+      <material name="servo_horns_18_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 6.93889e-18 -0.00115" rpy="-1.5708 1.56028e-17 -1.27132e-16"/>
+      <geometry>
+        <mesh filename="package://assets/servo_horns.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from tibia_6 to femur_6 -->
+  <joint name="femur_l3" type="revolute">
+    <origin xyz="0.13 0 0" rpy="3.14159 6.7833e-16 2.53073"/>
+    <parent link="tibia_6"/>
+    <child link="femur_6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-2.18166" upper="5.77316e-15"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from hip_6 to tibia_6 -->
+  <joint name="tibia_l3" type="revolute">
+    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 3.14159"/>
+    <parent link="hip_6"/>
+    <child link="tibia_6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.22173" upper="7.99361e-15"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from lowerbody to hip_6 -->
+  <joint name="hip_l3" type="revolute">
+    <origin xyz="-0.138347 0.0804306 0.00709854" rpy="-3.14159 7.69581e-15 -0.436332"/>
+    <parent link="lowerbody"/>
+    <child link="hip_6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+</robot>

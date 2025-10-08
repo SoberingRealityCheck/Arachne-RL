@@ -110,5 +110,5 @@ if __name__ == "__main__":
     }
 
     trainer = CurriculumTrainer(base_env, model, initial_config, save_path=save_path)
-    trainer.run(total_steps=3000000)  # Total of 300k steps for curriculum training
+    trainer.run(total_steps=300000)  # Total of 300k steps for curriculum training
     

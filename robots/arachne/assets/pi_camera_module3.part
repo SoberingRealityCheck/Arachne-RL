@@ -1,0 +1,14 @@
+{
+    "configuration": "default",
+    "documentId": "79f9aae12e6577d68d6b325a",
+    "documentMicroversion": "9ede7f5e6181c445056dbd66",
+    "documentVersion": "fa5c18446d29157a9756549c",
+    "elementId": "89d09c334ab654ab5370a71b",
+    "fullConfiguration": "default",
+    "id": "M4sGpWJa56nOPKAXy",
+    "isStandardContent": false,
+    "name": "Pi camera module3 <1>",
+    "partId": "JFD",
+    "suppressed": false,
+    "type": "Part"
+}
