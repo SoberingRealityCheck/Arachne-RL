@@ -64,5 +64,6 @@ ROBOTS = {
         'ACTION_LIMIT': 0.75, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
         'INITIAL_MOMENTUM': 1.0,  # Scale of random initial momentum at start of episode (0.0 to 1.0)
         'TARGET_HEIGHT': 0.5,  # Target height for the arachne to maintain
+        'TARGET_SPEED': 1.0,  # Target forward speed for the arachne to maintain
     }
 }
