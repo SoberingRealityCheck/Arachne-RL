@@ -19,13 +19,14 @@ import pybullet_data
 import gymnasium as gym
 from gymnasium import spaces
 from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import CheckpointCallback
+from stable_baselines3.common.callbacks import CheckpointCallback, CallbackList
 
 # These are our custom modules: 
 # utils has a bunch of helper functions for importing stuff and navigating local files
 # env has our custom BaseEnv envrironment class that inherits from gym.Env and implements the RL environment
 from src.envs import env
 from src.utils import utils
+from src.utils.plotting_callback import LivePlottingCallback, LivePlottingCallbackNoGUI
 
 if __name__ == "__main__":
 
@@ -78,19 +79,54 @@ if __name__ == "__main__":
             print(f"Loading existing model from {best_model_path}")
             model = PPO.load(best_model_path, env=env, device='cpu')
     else:
-        model = PPO("MlpPolicy", env, verbose=1, n_steps=2048)  # Slightly larger n_steps may help with harder tasks
+        # Create new model with stable training parameters
+        # Lower learning rate to prevent KL divergence spikes
+        model = PPO(
+            "MlpPolicy", 
+            env, 
+            verbose=1, 
+            n_steps=2048,
+            learning_rate=0.0001,  # Reduced from default 0.0003 for stability
+            batch_size=64,         # Smaller batches for better gradient estimates
+            target_kl=0.015,       # Early stop if KL gets too high (prevents spikes)
+            ent_coef=0.01,        # Slight exploration bonus
+        )
 
+    # Setup callbacks
     checkpoint_callback = CheckpointCallback(
         save_freq=200000,
         save_path=save_path,
         name_prefix=save_prefix
     )
     
+    # Add live plotting callback (different behavior for GUI vs headless)
+    if render_mode == 'human':
+        # With GUI: Show live updating plots
+        plot_callback = LivePlottingCallback(
+            plot_freq=2048,  # Update every iteration (n_steps)
+            max_points=500,  # Keep last 500 data points for performance
+            verbose=1
+        )
+        print("\n📊 Live plotting enabled! A plot window will open showing real-time metrics.")
+        print("   The plot updates every 2048 steps (~7 seconds at 290 fps)")
+    else:
+        # Headless: Save plots periodically to files
+        plot_callback = LivePlottingCallbackNoGUI(
+            plot_freq=2048,      # Collect data every iteration
+            save_freq=50000,     # Save plot image every 50k steps
+            save_path='./training_plots/',
+            verbose=1
+        )
+        print("\n📊 Plot saving enabled! Training plots will be saved to ./training_plots/")
+        print("   Plots saved every 50k steps")
+    
+    # Combine callbacks
+    callback_list = CallbackList([checkpoint_callback, plot_callback])
+    
     try:
-
-        model.learn(total_timesteps=1000000, callback=checkpoint_callback, progress_bar=True)  # This task may require longer training
+        model.learn(total_timesteps=1000000, callback=callback_list, progress_bar=True)
     except KeyboardInterrupt:
-        print("Training stopped by user.")
+        print("\nTraining stopped by user.")
     finally:
         env.close()
     

@@ -79,8 +79,31 @@ class VisualizationEnv(BaseEnv):
         
         # Debug: Print occasionally to verify values (every 100 steps)
         if self.steps_taken % 100 == 0:
-            print(f"Step {self.steps_taken}: Target vel=[{self.target_velocity[0]:.3f}, {self.target_velocity[1]:.3f}], " +
-                  f"Target orient angle={target_orientation:.2f} rad")
+            # Get current velocity and orientation for comparison
+            current_vel, _ = p.getBaseVelocity(self.robot_id)
+            current_pos, current_quat = p.getBasePositionAndOrientation(self.robot_id)
+            current_yaw = p.getEulerFromQuaternion(current_quat)[2]
+            target_yaw = target_orientation
+            
+            # Calculate velocity magnitude error
+            vel_error = np.linalg.norm(np.array(current_vel[:2]) - np.array(self.target_velocity[:2]))
+            
+            # Calculate orientation (which way robot is facing) error
+            yaw_error = abs(current_yaw - target_yaw)
+            if yaw_error > np.pi:
+                yaw_error = 2*np.pi - yaw_error
+            
+            # Calculate velocity DIRECTION error (which way robot is moving)
+            target_vel_angle = np.arctan2(self.target_velocity[1], self.target_velocity[0])
+            current_vel_angle = np.arctan2(current_vel[1], current_vel[0])
+            vel_direction_error = abs(current_vel_angle - target_vel_angle)
+            if vel_direction_error > np.pi:
+                vel_direction_error = 2*np.pi - vel_direction_error
+            
+            print(f"Step {self.steps_taken}:")
+            print(f"  Target: vel=[{self.target_velocity[0]:.3f}, {self.target_velocity[1]:.3f}] ({target_vel_angle:.2f} rad), face={target_orientation:.2f} rad")
+            print(f"  Current: vel=[{current_vel[0]:.3f}, {current_vel[1]:.3f}] ({current_vel_angle:.2f} rad), face={current_yaw:.2f} rad")
+            print(f"  Error: vel_mag={vel_error:.3f} m/s, vel_dir={vel_direction_error:.3f} rad, face_dir={yaw_error:.3f} rad")
 
         # Clear previous debug lines
         for line_id in self.debug_lines:
@@ -165,13 +188,45 @@ if __name__ == "__main__":
             raise
 
 
-    print("Running trained model for 3 episodes...")
-    for episode in range(3):
-        obs, info = env.reset()
-        done = False
-        total_reward = 0
-        
-        while not done:
+    print("Running trained model - adjust sliders to change target velocity/orientation")
+    print("=" * 80)
+    print("Controls:")
+    print("  - Target Velocity Direction: 0=Right, 0.25=Up, 0.5=Left, 0.75=Down")
+    print("  - Target Velocity Magnitude: 0=Stopped, 1=Full speed")
+    print("  - Target Orientation: 0=Right, 0.25=Up, 0.5=Left, 0.75=Down")
+    print()
+    print("Visualization:")
+    print("  - Light RED line: Target velocity")
+    print("  - Light GREEN line: Target orientation")
+    print("  - Dark RED line: Current velocity")
+    print("  - Dark GREEN line: Current orientation")
+    print("=" * 80)
+    
+    obs, info = env.reset()
+    done = False
+    total_reward = 0
+    episode_count = 0
+    
+    # Run indefinitely (press Ctrl+C to stop)
+    try:
+        while True:
+            # Update targets from sliders BEFORE getting action
+            # This ensures the policy sees the current slider values
+            try:
+                direction = p.readUserDebugParameter(env.target_velocity_direction_id) * 2 * 3.14159
+                magnitude = p.readUserDebugParameter(env.target_velocity_magnitude_id)
+                target_orientation_angle = p.readUserDebugParameter(env.target_orientation_id) * 2 * 3.14159
+                
+                env.target_velocity = [magnitude * env.target_speed * np.cos(direction), 
+                                      magnitude * env.target_speed * np.sin(direction), 0]
+                env.target_orientation = [0, 0, np.sin(target_orientation_angle / 2), 
+                                         np.cos(target_orientation_angle / 2)]
+            except:
+                pass  # If reading fails, keep current targets
+            
+            # Get fresh observation with updated targets
+            obs = env._get_obs()
+            
             # Use the trained model to predict the next action
             action, _states = model.predict(obs, deterministic=True)
             
@@ -180,7 +235,14 @@ if __name__ == "__main__":
             done = terminated or truncated
             total_reward += reward
             
-        print(f"Episode {episode+1} finished with total reward: {total_reward:.2f}")
-
+            if done:
+                episode_count += 1
+                print(f"Episode {episode_count} finished with total reward: {total_reward:.2f}")
+                obs, info = env.reset()
+                total_reward = 0
+                done = False
+    except KeyboardInterrupt:
+        print("\nVisualization stopped by user.")
+    
     env.close()
     print("Evaluation finished.")

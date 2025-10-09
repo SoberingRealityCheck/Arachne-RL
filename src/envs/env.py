@@ -337,8 +337,8 @@ class BaseEnv(gym.Env):
         yaw_error = math.atan2(math.sin(yaw_error), math.cos(yaw_error))  # Wrap to [-pi, pi]
 
         ## Reward Components: ##
-        # 1. Linear Velocity Tracking Reward - SCALED UP to dominate!
-        r_lin_vel = 10.0 * np.exp(-np.linalg.norm(np.array(base_vel) - np.array(target_vel))**2)
+        # 1. Linear Velocity Tracking Reward - Use FORWARD_VEL_WEIGHT from config
+        r_lin_vel = self.FORWARD_VEL_WEIGHT * np.exp(-np.linalg.norm(np.array(base_vel) - np.array(target_vel))**2)
         # 2. Angular Velocity Tracking Reward
         r_ang_vel = np.exp(-np.linalg.norm(np.array(base_angular_vel) - np.array(target_angular_vel))**2 )
         # 3. Height Penalty - reduced weight
@@ -353,13 +353,14 @@ class BaseEnv(gym.Env):
         r_lin_vel_z = -0.1 * base_vel[2]**2
         # 7. Roll and Pitch Penalty
         r_rp = -(1 - uprightness)  # Penalty for not being upright
-        # 8. Survival Reward - CRITICAL: Incentivize staying alive!
-        r_survival = self.SURVIVAL_WEIGHT * steps_taken if not is_fallen else 0.0
+        # 8. Survival Reward - Small constant reward for staying alive (not scaled by time!)
+        # Scaling by steps_taken causes it to dominate other rewards in long episodes
+        r_survival = self.SURVIVAL_WEIGHT if not is_fallen else 0.0
         # 9. Fallen Penalty - CRITICAL: Severe penalty for falling!
         r_fallen = -self.FALLEN_PENALTY if is_fallen else 0.0
         # 10. Orientation Tracking Reward - Match target yaw angle
-        # Use exponential reward: max reward (1.0) when yaw_error = 0, decays with error
-        r_orientation = self.ORIENTATION_REWARD_WEIGHT * np.exp(-(yaw_error**2))
+        # Scale up to balance with velocity reward (exp already gives good gradient)
+        r_orientation = self.ORIENTATION_REWARD_WEIGHT * 10.0 * np.exp(-(yaw_error**2))
 
         ## Calculate total reward:
         total_reward = (r_lin_vel + r_ang_vel + r_height + r_pose + r_action_rate + r_lin_vel_z + 
@@ -394,10 +395,31 @@ class BaseEnv(gym.Env):
         target_orient = self.target_orientation
 
         ## Reward Components: ##
-        # - Velocity in target direction: get the component of the base velocity in the direction of the target velocity
+        
+        # === VELOCITY TRACKING (Primary Objective) === #
+        # Calculate velocity error (both magnitude and direction)
+        velocity_error = np.linalg.norm(np.array(base_vel) - np.array(target_vel))
+        # Exponential reward that's high when error is low
+        velocity_tracking_reward = self.FORWARD_VEL_WEIGHT * np.exp(-velocity_error)
+        
+        # Bonus for forward component (helps early learning)
         goal_component = np.dot(base_vel, target_vel) / (np.linalg.norm(target_vel) + 1e-6)
-        # This should be positive if moving in the right direction, negative if moving away
-        goal_velocity_reward = self.FORWARD_VEL_WEIGHT * goal_component
+        forward_bonus = self.FORWARD_VEL_WEIGHT * 0.1 * max(0, goal_component)
+        
+        # === ORIENTATION TRACKING === #
+        # Extract yaw angles from quaternions for proper orientation tracking
+        qx, qy, qz, qw = current_base_orient
+        current_yaw = np.arctan2(2.0 * (qw * qz + qx * qy), 1.0 - 2.0 * (qy**2 + qz**2))
+        
+        tx, ty, tz, tw = target_orient
+        target_yaw = np.arctan2(2.0 * (tw * tz + tx * ty), 1.0 - 2.0 * (ty**2 + tz**2))
+        
+        # Calculate wrapped yaw error [-pi, pi]
+        yaw_error = current_yaw - target_yaw
+        yaw_error = np.arctan2(np.sin(yaw_error), np.cos(yaw_error))
+        
+        # Exponential reward for matching orientation (scaled up to matter!)
+        orientation_reward = self.ORIENTATION_REWARD_WEIGHT * 50.0 * np.exp(-abs(yaw_error))
 
         # - Uprightness
         uprightness = local_up_vector[2]
@@ -406,13 +428,6 @@ class BaseEnv(gym.Env):
         is_fallen = current_base_pos[2] < 0.1 or uprightness < 0.5
         # Survival reward that ramps up over time to encourage longer episodes
         survival_reward = self.SURVIVAL_WEIGHT * steps_taken if not is_fallen else 0.0
-        
-        # Matching orientation with the target velocity direction (encourage facing the direction of movement)
-   
-
-        target_direction = target_vel / (np.linalg.norm(target_vel) + 1e-6)
-        orientation_alignment = np.dot(forward_vector, target_direction)
-        orientation_reward = self.ORIENTATION_REWARD_WEIGHT * max(0.0, orientation_alignment)
 
         ## - Penalties: ##
         # - Shaking
@@ -434,19 +449,22 @@ class BaseEnv(gym.Env):
 
         # Sum all components, return total reward
         total_reward = (
-            goal_velocity_reward + upright_reward + survival_reward + orientation_reward - home_penalty -
+            velocity_tracking_reward + forward_bonus + upright_reward + survival_reward + orientation_reward - home_penalty -
             shake_penalty - fallen_penalty - jump_penalty - high_alt_pen - tilt_penalty
         )
         
         if steps_taken % 240 == 0 and self.render_mode == 'human':
             print("================= Step Reward Breakdown ===============")
             print(f"Target Velocity: {target_vel}, Current Velocity: {base_vel}")
+            print(f"Target Yaw: {target_yaw:.2f}, Current Yaw: {current_yaw:.2f}, Yaw Error: {yaw_error:.2f}")
             print(f"Base Position: {current_base_pos}, Uprightness: {uprightness:.2f}")
             print(f"Is Fallen: {is_fallen}")
 
-            print(f"Step Reward Breakdown: Forward: {goal_velocity_reward:.2f}, Upright: {upright_reward:.2f}, Survival: {survival_reward:.2f}, Home Penalty: {-home_penalty:.2f}, "
-              f"Shake Penalty: {-shake_penalty:.2f}, Fallen Penalty: {-fallen_penalty:.2f}, Orientation: {orientation_reward:.2f}, Tilt Penalty: {-tilt_penalty:.2f}, "
-              f"Jump Penalty: {-jump_penalty:.2f}, High Alt Penalty: {-high_alt_pen:.2f} => Total: {total_reward:.2f}")
+            print(f"Step Reward Breakdown: Vel Track: {velocity_tracking_reward:.2f}, Fwd Bonus: {forward_bonus:.2f}, "
+                  f"Upright: {upright_reward:.2f}, Survival: {survival_reward:.2f}, Orient: {orientation_reward:.2f}, "
+                  f"Home Penalty: {-home_penalty:.2f}, Shake Penalty: {-shake_penalty:.2f}, Fallen Penalty: {-fallen_penalty:.2f}, "
+                  f"Tilt Penalty: {-tilt_penalty:.2f}, Jump Penalty: {-jump_penalty:.2f}, High Alt Penalty: {-high_alt_pen:.2f} "
+                  f"=> Total: {total_reward:.2f}")
 
         return total_reward
         # DEBUG: Print out all the reward components
@@ -478,13 +496,15 @@ class BaseEnv(gym.Env):
                     )
                 p.stepSimulation()
                 self.steps_taken += 1
-                # NEW: use alternate function, input steps taken for ramping survival reward
-                total_reward += self.calculate_step_reward_new(action, steps_taken=self.steps_taken)
-
+                
                 if self.steps_taken >= self.steps_per_episode:
                     break
                 if self.render_mode == 'human':
                     time.sleep(self.time_step)
+            
+            # Calculate reward ONCE per action (not per physics step!)
+            # This keeps reward scale reasonable for value function learning
+            total_reward = self.calculate_step_reward_new(action, steps_taken=self.steps_taken)
 
             
             # --- Termination conditions ---
