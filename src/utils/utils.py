@@ -16,6 +16,7 @@ def load_all_params(robot_name):
         'SURVIVAL_WEIGHT',
         'FALLEN_PENALTY',
         'FORWARD_VEL_WEIGHT',
+        'ANGULAR_VEL_WEIGHT',
         'JUMP_PENALTY_WEIGHT',
         'HIGH_ALTITUDE_PENALTY_WEIGHT',
         'HOME_POSITION_PENALTY_WEIGHT',
@@ -24,8 +25,7 @@ def load_all_params(robot_name):
         'ACTION_LIMIT',
         'INITIAL_MOMENTUM',
         'TARGET_SPEED',
-        'TARGET_HEIGHT',
-        'START_POSITION'
+        
     ]
     params = {}
     for param in possible_params:

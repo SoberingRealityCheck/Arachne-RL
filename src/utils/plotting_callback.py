@@ -1,4 +1,5 @@
 """
+100% vibe coded callback thing but lowkey works really well so not touching it 
 Custom callback for real-time training visualization
 Shows plots of key metrics that update during training
 """
@@ -61,7 +62,7 @@ class LivePlottingCallback(BaseCallback):
             ('Policy Loss', 'Loss', 'Policy Gradient Loss', 4),
             ('Approx KL', 'KL Divergence', 'KL Divergence', 5),
             ('Training Speed', 'FPS', 'Frames per Second', 6),
-            ('Progress (Very Important Metric)', 'Timesteps', 'Total Timesteps', 7),
+            ('Timesteps', 'Timesteps', 'Total Timesteps', 7),
         ]
         
         for title, ylabel, label, idx in plot_configs:
@@ -127,7 +128,7 @@ class LivePlottingCallback(BaseCallback):
             self.axes[6].autoscale_view()
             
             # Progress (total timesteps)
-            self.lines['Total Timesteps (Very Important Metric)'].set_data(x, x)
+            self.lines['Total Timesteps'].set_data(x, x)
             self.axes[7].relim()
             self.axes[7].autoscale_view()
         
