@@ -23,17 +23,10 @@ class VisualizationEnv(BaseEnv):
         # Set up a interactive debug variable for pybullet to control: 
         #   - target velocity direction (0 to 1 times 2pi)
         #   - target velocity magnitude (0 to 1)
-<<<<<<< HEAD
-        #   - Target orientation (0 to 1 times 2pi)
-        self.target_velocity_direction_id = p.addUserDebugParameter("Target Velocity Direction", 0, 1, 0)
-        self.target_velocity_magnitude_id = p.addUserDebugParameter("Target Velocity Magnitude", 0, 1, 0)
-        self.target_orientation_id = p.addUserDebugParameter("Target Orientation", 0, 1, 0)
-=======
         #   - Target turn (-1 to 1 times pi/2 radians/sec)
         self.target_velocity_direction_id = p.addUserDebugParameter("Target Velocity Direction", 0, 1, 0)
         self.target_velocity_magnitude_id = p.addUserDebugParameter("Target Velocity Magnitude", 0, 1, 0)
         self.target_turn_id = p.addUserDebugParameter("Target Turn", -1, 1, 0)
->>>>>>> upstream/main
 
         # Initialize debug object lines to be drawn on for visualization of orientation/velocity
         self.debug_lines = []
@@ -48,22 +41,13 @@ class VisualizationEnv(BaseEnv):
         try:
             direction = p.readUserDebugParameter(self.target_velocity_direction_id) * 2 * 3.14159
             magnitude = p.readUserDebugParameter(self.target_velocity_magnitude_id)
-<<<<<<< HEAD
-            target_orientation_angle = p.readUserDebugParameter(self.target_orientation_id) * 2 * 3.14159
-=======
             target_turn = p.readUserDebugParameter(self.target_turn_id) * 3.14159 / 2
->>>>>>> upstream/main
             
             # Set target velocity from sliders
             self.target_velocity = [magnitude * self.target_speed * np.cos(direction), 
                                    magnitude * self.target_speed * np.sin(direction), 0]
-<<<<<<< HEAD
-            # Set target orientation from slider (as quaternion)
-            self.target_orientation = [0, 0, np.sin(target_orientation_angle / 2), np.cos(target_orientation_angle / 2)]
-=======
             # Set target turn from slider (as scalar)
             self.target_turn = target_turn
->>>>>>> upstream/main
         except Exception as e:
             print(f"Warning: Could not read debug sliders in reset: {e}")
             # Keep the random values from parent reset

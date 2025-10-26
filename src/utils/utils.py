@@ -25,6 +25,7 @@ def load_all_params(robot_name):
         'ACTION_LIMIT',
         'INITIAL_MOMENTUM',
         'TARGET_SPEED',
+        'START_POSITION'
         
     ]
     params = {}

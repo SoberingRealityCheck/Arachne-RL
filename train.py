@@ -103,24 +103,16 @@ if __name__ == "__main__":
     
     # Add live plotting callback (different behavior for GUI vs headless)
     if render_mode == 'human':
-<<<<<<< HEAD
-=======
         # Disable live plotting to avoid crashes
->>>>>>> upstream/main
         # With GUI: Show live updating plots
         plot_callback = LivePlottingCallback(
             plot_freq=2048,  # Update every iteration (n_steps)
             max_points=500,  # Keep last 500 data points for performance
             verbose=1
         )
-<<<<<<< HEAD
-        print("\n📊 Live plotting enabled! A plot window will open showing real-time metrics.")
-        print("   The plot updates every 2048 steps (~7 seconds at 290 fps)")
-=======
         print("\n Live plotting enabled! A plot window will open showing real-time metrics.")
         print("   The plot updates every 2048 steps (~7 seconds at 290 fps)")
         pass
->>>>>>> upstream/main
     else:
         # Headless: Save plots periodically to files
         plot_callback = LivePlottingCallbackNoGUI(
@@ -129,27 +121,16 @@ if __name__ == "__main__":
             save_path='./training_plots/',
             verbose=1
         )
-<<<<<<< HEAD
-        print("\n📊 Plot saving enabled! Training plots will be saved to ./training_plots/")
-=======
         print("\n Plot saving enabled! Training plots will be saved to ./training_plots/")
->>>>>>> upstream/main
         print("   Plots saved every 50k steps")
     
     # Combine callbacks
     callback_list = CallbackList([checkpoint_callback, plot_callback])
-<<<<<<< HEAD
-    
-    try:
-        model.learn(total_timesteps=1000000, callback=callback_list, progress_bar=True)
-    except KeyboardInterrupt:
-        print("\nTraining stopped by user.")
-=======
 
 
     try:
         # Disable callback
-        model.learn(total_timesteps=1000000, callback=None, progress_bar=True)  # This task may require longer training
+        model.learn(total_timesteps=1000000, callback=checkpoint_callback, progress_bar=True)  # This task may require longer training
     except KeyboardInterrupt:
         print("Training stopped by user.")
         reward_history = pd.read_csv(env.reward_history_filename)
@@ -161,7 +142,6 @@ if __name__ == "__main__":
             ax.set_ylabel('value')
         plt.tight_layout()
         plt.show()
->>>>>>> upstream/main
     finally:
         env.close()
     
