@@ -1,17 +1,33 @@
 <?xml version="1.0" ?>
 <!-- Generated using onshape-to-robot -->
-<!-- Onshape https://cad.onshape.com/documents/6d2de7d00083ca907fc2babe/w/304502f29ec410dd09729b69/e/1a771d50b15e1c926d9bfb2b -->
+<!-- Onshape https://cad.onshape.com/documents/6d2de7d00083ca907fc2babe/w/304502f29ec410dd09729b69/e/5f48c3461118a81a0306302b -->
 <robot name="arachne">
   <!-- Link lowerbody -->
   <link name="lowerbody">
     <inertial>
-      <origin xyz="-0.0540356 -0.0172819 -0.02284" rpy="0 0 0"/>
-      <mass value="0.776148"/>
-      <inertia ixx="0.00347337" ixy="-1.33678e-06" ixz="-2.85786e-08" iyy="0.00268241" iyz="-5.69255e-06" izz="0.00596839"/>
+      <origin xyz="-0.0384676 -0.0406717 0.0095234" rpy="0 0 0"/>
+      <mass value="1.10838"/>
+      <inertia ixx="0.0056755" ixy="6.08941e-06" ixz="7.69729e-07" iyy="0.00403706" iyz="0.000516495" izz="0.00802109"/>
     </inertial>
+    <!-- Part shell -->
+    <visual>
+      <origin xyz="-0.542935 -0.0510306 0.0135385" rpy="-1.09062e-14 -1.58122e-14 -1.35413e-26"/>
+      <geometry>
+        <mesh filename="package://assets/shell.stl"/>
+      </geometry>
+      <material name="shell_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.542935 -0.0510306 0.0135385" rpy="-1.09062e-14 -1.58122e-14 -1.35413e-26"/>
+      <geometry>
+        <mesh filename="package://assets/shell.stl"/>
+      </geometry>
+    </collision>
     <!-- Part lowerbody -->
     <visual>
-      <origin xyz="-0.054048 -0.00137342 -0.0313015" rpy="-3.14159 -1.58122e-14 -2.01699e-27"/>
+      <origin xyz="-0.0383733 0.0113195 -0.0407615" rpy="1.09062e-14 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/lowerbody.stl"/>
       </geometry>
@@ -20,14 +36,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.054048 -0.00137342 -0.0313015" rpy="-3.14159 -1.58122e-14 -2.01699e-27"/>
+      <origin xyz="-0.0383733 0.0113195 -0.0407615" rpy="1.09062e-14 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/lowerbody.stl"/>
       </geometry>
     </collision>
     <!-- Part upperbody -->
     <visual>
-      <origin xyz="-0.316404 -0.0374887 -0.0213015" rpy="1.36938e-27 -1.58122e-14 -2.01699e-27"/>
+      <origin xyz="-0.301202 -0.0470153 0.00753852" rpy="-1.09062e-14 -1.58122e-14 -1.35413e-26"/>
       <geometry>
         <mesh filename="package://assets/upperbody.stl"/>
       </geometry>
@@ -36,14 +52,46 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.316404 -0.0374887 -0.0213015" rpy="1.36938e-27 -1.58122e-14 -2.01699e-27"/>
+      <origin xyz="-0.301202 -0.0470153 0.00753852" rpy="-1.09062e-14 -1.58122e-14 -1.35413e-26"/>
       <geometry>
         <mesh filename="package://assets/upperbody.stl"/>
       </geometry>
     </collision>
+    <!-- Part mask -->
+    <visual>
+      <origin xyz="-0.18804 -0.144066 0.0520093" rpy="-1.5708 1.57489e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="package://assets/mask.stl"/>
+      </geometry>
+      <material name="mask_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.18804 -0.144066 0.0520093" rpy="-1.5708 1.57489e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="package://assets/mask.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part neck -->
+    <visual>
+      <origin xyz="0.206227 -0.124066 0.0509436" rpy="1.5708 -1.57489e-14 -1.35413e-26"/>
+      <geometry>
+        <mesh filename="package://assets/neck.stl"/>
+      </geometry>
+      <material name="neck_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.206227 -0.124066 0.0509436" rpy="1.5708 -1.57489e-14 -1.35413e-26"/>
+      <geometry>
+        <mesh filename="package://assets/neck.stl"/>
+      </geometry>
+    </collision>
     <!-- Part idler -->
     <visual>
-      <origin xyz="0.0448815 0.0747041 0.18291" rpy="-3.14159 1.43937e-14 -2.71479"/>
+      <origin xyz="0.062236 0.0615842 0.20775" rpy="-3.14159 9.72151e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -52,14 +100,30 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0448815 0.0747041 0.18291" rpy="-3.14159 1.43937e-14 -2.71479"/>
+      <origin xyz="0.062236 0.0615842 0.20775" rpy="-3.14159 9.72151e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
+    <!-- Part part_1 -->
+    <visual>
+      <origin xyz="-0.0383733 -0.0275379 -0.0320315" rpy="-1.58122e-14 1.09062e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/part_1.stl"/>
+      </geometry>
+      <material name="part_1_material">
+        <color rgba="0.25 0.25 0.25 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0383733 -0.0275379 -0.0320315" rpy="-1.58122e-14 1.09062e-14 1.5708"/>
+      <geometry>
+        <mesh filename="package://assets/part_1.stl"/>
+      </geometry>
+    </collision>
     <!-- Part idler_2 -->
     <visual>
-      <origin xyz="-0.150443 -0.00554233 0.18291" rpy="-3.14159 -1.58122e-14 -3.89288e-15"/>
+      <origin xyz="-0.141584 -0.0100689 0.20775" rpy="3.14159 -1.58122e-14 -1.35416e-26"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -68,14 +132,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.150443 -0.00554233 0.18291" rpy="-3.14159 -1.58122e-14 -3.89288e-15"/>
+      <origin xyz="-0.141584 -0.0100689 0.20775" rpy="3.14159 -1.58122e-14 -1.35416e-26"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_3 -->
     <visual>
-      <origin xyz="-0.143501 0.0940223 0.18291" rpy="-3.14159 -1.43307e-14 -0.436332"/>
+      <origin xyz="-0.130412 0.0799642 0.20775" rpy="3.14159 -1.89398e-14 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -84,14 +148,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.143501 0.0940223 0.18291" rpy="-3.14159 -1.43307e-14 -0.436332"/>
+      <origin xyz="-0.130412 0.0799642 0.20775" rpy="3.14159 -1.89398e-14 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_4 -->
     <visual>
-      <origin xyz="0.0269595 -0.122635 0.18291" rpy="3.14159 1.23128e-14 2.46337"/>
+      <origin xyz="0.0541364 -0.133587 0.20775" rpy="3.14159 1.91554e-14 2.46337"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -100,14 +164,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0269595 -0.122635 0.18291" rpy="3.14159 1.23128e-14 2.46337"/>
+      <origin xyz="0.0541364 -0.133587 0.20775" rpy="3.14159 1.91554e-14 2.46337"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_5 -->
     <visual>
-      <origin xyz="0.0422868 -0.0267405 0.18291" rpy="3.14159 1.58129e-14 3.13207"/>
+      <origin xyz="0.0648374 -0.030349 0.20775" rpy="-3.14159 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -116,14 +180,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0422868 -0.0267405 0.18291" rpy="3.14159 1.58129e-14 3.13207"/>
+      <origin xyz="0.0648374 -0.030349 0.20775" rpy="-3.14159 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_6 -->
     <visual>
-      <origin xyz="-0.148603 -0.105946 0.18291" rpy="3.14159 -1.24067e-14 0.668693"/>
+      <origin xyz="-0.143607 -0.117795 0.20775" rpy="3.14159 -5.47011e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -132,14 +196,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.148603 -0.105946 0.18291" rpy="3.14159 -1.24067e-14 0.668693"/>
+      <origin xyz="-0.143607 -0.117795 0.20775" rpy="3.14159 -5.47011e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r -->
     <visual>
-      <origin xyz="0.0220999 0.0754833 -0.0113015" rpy="6.54567e-15 1.43937e-14 -2.71479"/>
+      <origin xyz="0.039448 0.0621463 0.0135385" rpy="1.65669e-14 9.72151e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -148,14 +212,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0220999 0.0754833 -0.0113015" rpy="6.54567e-15 1.43937e-14 -2.71479"/>
+      <origin xyz="0.039448 0.0621463 0.0135385" rpy="1.65669e-14 9.72151e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns -->
     <visual>
-      <origin xyz="0.0312028 0.0796229 0.00594854" rpy="-1.5708 2.09797e-15 -2.71479"/>
+      <origin xyz="0.0485111 0.0663725 0.0307885" rpy="-1.5708 -2.57421e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -164,14 +228,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0312028 0.0796229 0.00594854" rpy="-1.5708 2.09797e-15 -2.71479"/>
+      <origin xyz="0.0485111 0.0663725 0.0307885" rpy="-1.5708 -2.57421e-15 -2.70526"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_2 -->
     <visual>
-      <origin xyz="-0.130028 -0.0156824 -0.0113015" rpy="1.46066e-27 -1.58122e-14 -3.89288e-15"/>
+      <origin xyz="-0.121169 -0.0202089 0.0135385" rpy="-1.09062e-14 -1.58122e-14 -1.35416e-26"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -180,14 +244,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.130028 -0.0156824 -0.0113015" rpy="1.46066e-27 -1.58122e-14 -3.89288e-15"/>
+      <origin xyz="-0.121169 -0.0202089 0.0135385" rpy="-1.09062e-14 -1.58122e-14 -1.35416e-26"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_2 -->
     <visual>
-      <origin xyz="-0.140028 -0.0156824 0.00594854" rpy="-1.5708 -1.75355e-16 -8.38581e-15"/>
+      <origin xyz="-0.131169 -0.0202089 0.0307885" rpy="-1.5708 -1.75355e-16 -4.49293e-15"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -196,14 +260,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.140028 -0.0156824 0.00594854" rpy="-1.5708 -1.75355e-16 -8.38581e-15"/>
+      <origin xyz="-0.131169 -0.0202089 0.0307885" rpy="-1.5708 -1.75355e-16 -4.49293e-15"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_3 -->
     <visual>
-      <origin xyz="-0.129284 0.0762044 -0.0113015" rpy="6.6825e-15 -1.43307e-14 -0.436332"/>
+      <origin xyz="-0.116195 0.0621463 0.0135385" rpy="-3.20189e-15 -1.89398e-14 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -212,14 +276,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.129284 0.0762044 -0.0113015" rpy="6.6825e-15 -1.43307e-14 -0.436332"/>
+      <origin xyz="-0.116195 0.0621463 0.0135385" rpy="-3.20189e-15 -1.89398e-14 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_3 -->
     <visual>
-      <origin xyz="-0.138347 0.0804306 0.00594854" rpy="-1.5708 7.69581e-15 -0.436332"/>
+      <origin xyz="-0.125258 0.0663725 0.0307885" rpy="-1.5708 3.08664e-15 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -228,14 +292,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.138347 0.0804306 0.00594854" rpy="-1.5708 7.69581e-15 -0.436332"/>
+      <origin xyz="-0.125258 0.0663725 0.0307885" rpy="-1.5708 3.08664e-15 -0.436332"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_4 -->
     <visual>
-      <origin xyz="0.0174242 -0.10193 -0.0113015" rpy="-9.92068e-15 1.23128e-14 2.46337"/>
+      <origin xyz="0.044601 -0.112882 0.0135385" rpy="-1.42811e-15 1.91554e-14 2.46337"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -244,14 +308,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0174242 -0.10193 -0.0113015" rpy="-9.92068e-15 1.23128e-14 2.46337"/>
+      <origin xyz="0.044601 -0.112882 0.0135385" rpy="-1.42811e-15 1.91554e-14 2.46337"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_4 -->
     <visual>
-      <origin xyz="0.0252111 -0.108204 0.00594854" rpy="-1.5708 3.08939e-15 2.46337"/>
+      <origin xyz="0.052388 -0.119156 0.0307885" rpy="-1.5708 9.93205e-15 2.46337"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -260,14 +324,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0252111 -0.108204 0.00594854" rpy="-1.5708 3.08939e-15 2.46337"/>
+      <origin xyz="0.052388 -0.119156 0.0307885" rpy="-1.5708 9.93205e-15 2.46337"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_5 -->
     <visual>
-      <origin xyz="0.0219689 -0.0164065 -0.0113015" rpy="-1.5065e-16 1.58129e-14 3.13207"/>
+      <origin xyz="0.044422 -0.0202089 0.0135385" rpy="1.09062e-14 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -276,14 +340,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0219689 -0.0164065 -0.0113015" rpy="-1.5065e-16 1.58129e-14 3.13207"/>
+      <origin xyz="0.044422 -0.0202089 0.0135385" rpy="1.09062e-14 1.58122e-14 -3.14159"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_5 -->
     <visual>
-      <origin xyz="0.0319685 -0.0165017 0.00594854" rpy="-1.5708 -3.06292e-15 3.13207"/>
+      <origin xyz="0.054422 -0.0202089 0.0307885" rpy="-1.5708 -3.06367e-15 3.14159"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -292,14 +356,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0319685 -0.0165017 0.00594854" rpy="-1.5708 -3.06292e-15 3.13207"/>
+      <origin xyz="0.054422 -0.0202089 0.0307885" rpy="-1.5708 -3.06367e-15 3.14159"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_6 -->
     <visual>
-      <origin xyz="-0.126298 -0.101246 -0.0113015" rpy="-9.80292e-15 -1.24067e-14 0.668693"/>
+      <origin xyz="-0.121348 -0.112882 0.0135385" rpy="-1.84133e-14 -5.47011e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -308,14 +372,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.126298 -0.101246 -0.0113015" rpy="-9.80292e-15 -1.24067e-14 0.668693"/>
+      <origin xyz="-0.121348 -0.112882 0.0135385" rpy="-1.84133e-14 -5.47011e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_6 -->
     <visual>
-      <origin xyz="-0.134145 -0.107445 0.00594854" rpy="-1.5708 5.2737e-16 0.668693"/>
+      <origin xyz="-0.129135 -0.119156 0.0307885" rpy="-1.5708 7.46399e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -324,38 +388,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.134145 -0.107445 0.00594854" rpy="-1.5708 5.2737e-16 0.668693"/>
+      <origin xyz="-0.129135 -0.119156 0.0307885" rpy="-1.5708 7.46399e-15 0.678221"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link hip -->
-  <link name="hip">
+  <!-- Link righthip -->
+  <link name="righthip">
     <inertial>
-      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+      <origin xyz="-0.0451285 0.00260019 0.0241834" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.22234e-05" ixy="1.72216e-06" ixz="-3.44081e-07" iyy="4.58086e-05" iyz="4.48241e-07" izz="2.88934e-05"/>
     </inertial>
-    <!-- Part hip -->
+    <!-- Part righthip -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.14941e-17 -4.42385e-14"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 4.51609e-17 -5.7343e-14"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_material">
+      <material name="righthip_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.14941e-17 -4.42385e-14"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 4.51609e-17 -5.7343e-14"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_7 -->
     <visual>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.06314 -0.199212 0.00418461" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -364,14 +428,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.06314 -0.199212 0.00418461" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_7 -->
     <visual>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 -0.005 0.0246" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -380,14 +444,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 -0.005 0.0246" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_7 -->
     <visual>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.2367e-13 -1.5708 0"/>
+      <origin xyz="-0.053 -0.02225 0.0146" rpy="-1.36779e-13 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -396,7 +460,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.2367e-13 -1.5708 0"/>
+      <origin xyz="-0.053 -0.02225 0.0146" rpy="-1.36779e-13 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -405,13 +469,13 @@
   <!-- Link tibia -->
   <link name="tibia">
     <inertial>
-      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="7.43363e-19" iyy="9.74814e-05" iyz="6.53219e-19" izz="7.14134e-05"/>
+      <origin xyz="-0.0385155 -0.0140185 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="3.05824e-05" ixy="-7.62281e-06" ixz="-1.76182e-09" iyy="4.87514e-05" iyz="-6.4125e-10" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia -->
     <visual>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 2.62926e-14 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 2.64233e-14 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -420,38 +484,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 2.62926e-14 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 2.64233e-14 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur -->
-  <link name="femur">
+  <!-- Link rightfemur -->
+  <link name="rightfemur">
     <inertial>
-      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+      <origin xyz="0.00668249 0.0181534 -0.0256184" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112275" ixy="-5.7892e-06" ixz="1.8654e-07" iyy="3.11648e-05" iyz="-3.96641e-06" izz="0.000127723"/>
     </inertial>
-    <!-- Part femur -->
+    <!-- Part rightfemur -->
     <visual>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.88775e-14 -2.49801e-15 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="5.88973e-14 -2.55351e-15 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_material">
+      <material name="rightfemur_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.88775e-14 -2.49801e-15 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="5.88973e-14 -2.55351e-15 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_8 -->
     <visual>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.61433e-14 5.8207e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.60187e-14 5.83145e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -460,14 +524,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.61433e-14 5.8207e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.60187e-14 5.83145e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_8 -->
     <visual>
-      <origin xyz="0.01 3.8719e-15 -0.0184" rpy="2.51941e-15 5.88803e-14 3.26009e-14"/>
+      <origin xyz="0.01 3.84762e-15 -0.0184" rpy="2.55351e-15 5.88973e-14 3.27238e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -476,14 +540,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 3.8719e-15 -0.0184" rpy="2.51941e-15 5.88803e-14 3.26009e-14"/>
+      <origin xyz="0.01 3.84762e-15 -0.0184" rpy="2.55351e-15 5.88973e-14 3.27238e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_8 -->
     <visual>
-      <origin xyz="2.77556e-17 6.93889e-18 -0.00115" rpy="-1.5708 -2.34685e-17 -1.21229e-16"/>
+      <origin xyz="-1.38778e-17 -1.38778e-17 -0.00115" rpy="-1.5708 5.55112e-17 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -492,65 +556,65 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="2.77556e-17 6.93889e-18 -0.00115" rpy="-1.5708 -2.34685e-17 -1.21229e-16"/>
+      <origin xyz="-1.38778e-17 -1.38778e-17 -0.00115" rpy="-1.5708 5.55112e-17 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia to femur -->
+  <!-- Joint from tibia to rightfemur -->
   <joint name="femur_r1" type="revolute">
-    <origin xyz="-0.12216 -0.0444626 -3.45557e-15" rpy="-3.14159 1.8554e-14 0.959931"/>
+    <origin xyz="-0.0798739 -0.0290717 -2.22045e-15" rpy="-3.14159 1.84852e-14 0.959931"/>
     <parent link="tibia"/>
-    <child link="femur"/>
+    <child link="rightfemur"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-1.5099e-14" upper="2.18166"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip to tibia -->
+  <!-- Joint from righthip to tibia -->
   <joint name="tibia_r1" type="revolute">
-    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
-    <parent link="hip"/>
+    <origin xyz="-0.06 -0.0234 0.0146" rpy="-1.5708 -1.5708 0"/>
+    <parent link="righthip"/>
     <child link="tibia"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-2.22045e-15" upper="1.22173"/>
+    <limit effort="10" velocity="6" lower="-8.43769e-15" upper="1.22173"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip -->
+  <!-- Joint from lowerbody to righthip -->
   <joint name="hip_r1" type="revolute">
-    <origin xyz="0.0252111 -0.108204 0.00709854" rpy="3.14159 3.08939e-15 2.46337"/>
+    <origin xyz="0.052388 -0.119156 0.0319385" rpy="3.14159 9.93205e-15 2.46337"/>
     <parent link="lowerbody"/>
-    <child link="hip"/>
+    <child link="righthip"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Link hip_2 -->
-  <link name="hip_2">
+  <!-- Link righthip_2 -->
+  <link name="righthip_2">
     <inertial>
-      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+      <origin xyz="-0.0451512 0.00217011 0.0241834" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.21918e-05" ixy="1.59242e-06" ixz="-3.48336e-07" iyy="4.58402e-05" iyz="4.44942e-07" izz="2.88934e-05"/>
     </inertial>
-    <!-- Part hip_2 -->
+    <!-- Part righthip_2 -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -7.323e-18 -2.45118e-14"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -1.87498e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_2_material">
+      <material name="righthip_2_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -7.323e-18 -2.45118e-14"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -1.87498e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_9 -->
     <visual>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0612392 -0.199804 0.00418461" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -559,14 +623,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0612392 -0.199804 0.00418461" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_9 -->
     <visual>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.05295 -0.00550473 0.0246" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -575,14 +639,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.05295 -0.00550473 0.0246" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_9 -->
     <visual>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.11844e-13 -1.5708 0"/>
+      <origin xyz="-0.0527856 -0.0227539 0.0146" rpy="0.00952765 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -591,7 +655,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.11844e-13 -1.5708 0"/>
+      <origin xyz="-0.0527856 -0.0227539 0.0146" rpy="0.00952765 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -600,13 +664,13 @@
   <!-- Link tibia_2 -->
   <link name="tibia_2">
     <inertial>
-      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="1.17027e-20" iyy="9.74814e-05" iyz="1.15897e-21" izz="7.14134e-05"/>
+      <origin xyz="-0.0385155 -0.0140185 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="3.05824e-05" ixy="-7.62281e-06" ixz="-1.76182e-09" iyy="4.87514e-05" iyz="-6.4125e-10" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia_2 -->
     <visual>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 3.92633e-16 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 3.71231e-16 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -615,38 +679,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 3.92633e-16 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 3.71231e-16 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur_2 -->
-  <link name="femur_2">
+  <!-- Link rightfemur_2 -->
+  <link name="rightfemur_2">
     <inertial>
-      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+      <origin xyz="0.00668249 0.0181534 -0.0256184" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112275" ixy="-5.7892e-06" ixz="1.8654e-07" iyy="3.11648e-05" iyz="-3.96641e-06" izz="0.000127723"/>
     </inertial>
-    <!-- Part femur_2 -->
+    <!-- Part rightfemur_2 -->
     <visual>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.56481e-14 -2.61427e-14 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="5.56473e-14 -2.61423e-14 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_2_material">
+      <material name="rightfemur_2_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="5.56481e-14 -2.61427e-14 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="5.56473e-14 -2.61423e-14 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_10 -->
     <visual>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81991e-14 2.91261e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81993e-14 2.9084e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -655,14 +719,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81991e-14 2.91261e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -4.81993e-14 2.9084e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_10 -->
     <visual>
-      <origin xyz="0.01 3.02189e-15 -0.0184" rpy="2.61427e-14 5.56472e-14 3.54012e-15"/>
+      <origin xyz="0.01 3.04964e-15 -0.0184" rpy="2.61432e-14 5.56473e-14 3.48488e-15"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -671,14 +735,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 3.02189e-15 -0.0184" rpy="2.61427e-14 5.56472e-14 3.54012e-15"/>
+      <origin xyz="0.01 3.04964e-15 -0.0184" rpy="2.61432e-14 5.56473e-14 3.48488e-15"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_10 -->
     <visual>
-      <origin xyz="0 -2.94903e-17 -0.00115" rpy="-1.5708 1.51234e-18 6.5352e-17"/>
+      <origin xyz="2.77556e-17 -1.30104e-18 -0.00115" rpy="-1.5708 1.73472e-18 3.65241e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -687,65 +751,65 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 -2.94903e-17 -0.00115" rpy="-1.5708 1.51234e-18 6.5352e-17"/>
+      <origin xyz="2.77556e-17 -1.30104e-18 -0.00115" rpy="-1.5708 1.73472e-18 3.65241e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia_2 to femur_2 -->
+  <!-- Joint from tibia_2 to rightfemur_2 -->
   <joint name="femur_r2" type="revolute">
-    <origin xyz="-0.12216 -0.0444626 -1.38778e-17" rpy="-3.14159 1.60405e-14 0.959931"/>
+    <origin xyz="-0.0798739 -0.0290717 -3.23092e-17" rpy="-3.14159 1.60384e-14 0.959931"/>
     <parent link="tibia_2"/>
-    <child link="femur_2"/>
+    <child link="rightfemur_2"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="0" upper="2.18166"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip_2 to tibia_2 -->
+  <!-- Joint from righthip_2 to tibia_2 -->
   <joint name="tibia_r2" type="revolute">
-    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
-    <parent link="hip_2"/>
+    <origin xyz="-0.0597743 -0.0239706 0.0146" rpy="-1.56127 -1.5708 0"/>
+    <parent link="righthip_2"/>
     <child link="tibia_2"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="0" upper="1.22173"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip_2 -->
+  <!-- Joint from lowerbody to righthip_2 -->
   <joint name="hip_r2" type="revolute">
-    <origin xyz="0.0319685 -0.0165017 0.00709854" rpy="3.14159 -3.06292e-15 3.13207"/>
+    <origin xyz="0.054422 -0.0202089 0.0319385" rpy="3.14159 -3.06367e-15 3.14159"/>
     <parent link="lowerbody"/>
-    <child link="hip_2"/>
+    <child link="righthip_2"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <limit effort="10" velocity="6" lower="-0.533126" upper="0.514071"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Link hip_3 -->
-  <link name="hip_3">
+  <!-- Link righthip_3 -->
+  <link name="righthip_3">
     <inertial>
-      <origin xyz="-0.053206 0.00249015 0.0207088" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.22487e-05" ixy="2.10022e-06" ixz="2.05736e-07" iyy="5.43322e-05" iyz="3.66247e-07" izz="3.75006e-05"/>
+      <origin xyz="-0.0451512 0.00217011 0.0241834" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.21918e-05" ixy="1.59242e-06" ixz="-3.48336e-07" iyy="4.58402e-05" iyz="4.44942e-07" izz="2.88934e-05"/>
     </inertial>
-    <!-- Part hip_3 -->
+    <!-- Part righthip_3 -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.23269e-15 7.76784e-15"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -2.29782e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_3_material">
+      <material name="righthip_3_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -1.23269e-15 7.76784e-15"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -2.29782e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_11 -->
     <visual>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0612392 -0.199804 0.00418461" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -754,14 +818,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0729354 -0.199212 0.00108461" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0612392 -0.199804 0.00418461" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_11 -->
     <visual>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.05295 -0.00550473 0.0246" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -770,14 +834,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.005 0.0215" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.05295 -0.00550473 0.0246" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_11 -->
     <visual>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.7487e-14 -1.5708 0"/>
+      <origin xyz="-0.0527856 -0.0227539 0.0146" rpy="0.00952765 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -786,7 +850,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 -0.02225 0.0115" rpy="-1.7487e-14 -1.5708 0"/>
+      <origin xyz="-0.0527856 -0.0227539 0.0146" rpy="0.00952765 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -795,13 +859,13 @@
   <!-- Link tibia_3 -->
   <link name="tibia_3">
     <inertial>
-      <origin xyz="-0.06108 -0.0222313 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="4.33859e-05" ixy="-2.26958e-05" ixz="-2.22231e-19" iyy="9.74814e-05" iyz="-1.14541e-19" izz="7.14134e-05"/>
+      <origin xyz="-0.0385155 -0.0140185 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="3.05824e-05" ixy="-7.62281e-06" ixz="-1.76182e-09" iyy="4.87514e-05" iyz="-6.4125e-10" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia_3 -->
     <visual>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 -7.02658e-15 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 -7.04992e-15 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -810,38 +874,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.243359 0.0938963 -0.234601" rpy="-1.5708 -7.02658e-15 -2.79253"/>
+      <origin xyz="0.241669 0.0932813 -0.230075" rpy="-1.5708 -7.04992e-15 -2.79253"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur_3 -->
-  <link name="femur_3">
+  <!-- Link rightfemur_3 -->
+  <link name="rightfemur_3">
     <inertial>
-      <origin xyz="0.00696633 0.0653801 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.001055" ixy="3.57963e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="-1.42808e-05" izz="0.00107773"/>
+      <origin xyz="0.00668249 0.0181534 -0.0256184" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112275" ixy="-5.7892e-06" ixz="1.8654e-07" iyy="3.11648e-05" iyz="-3.96641e-06" izz="0.000127723"/>
     </inertial>
-    <!-- Part femur_3 -->
+    <!-- Part rightfemur_3 -->
     <visual>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="1.28331e-13 1.22672e-13 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="1.28231e-13 1.22707e-13 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_3_material">
+      <material name="rightfemur_3_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 -0.502112 -0.0284" rpy="1.28331e-13 1.22672e-13 1.5708"/>
+      <origin xyz="-0.251053 -0.52013 -0.0284" rpy="1.28231e-13 1.22707e-13 1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_12 -->
     <visual>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.80331e-15 -1.53595e-13"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.77236e-15 -1.53585e-13"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -850,14 +914,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.80331e-15 -1.53595e-13"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="3.14159 6.77236e-15 -1.53585e-13"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_12 -->
     <visual>
-      <origin xyz="0.01 2.85969e-15 -0.0184" rpy="-1.22718e-13 1.28222e-13 -6.73326e-14"/>
+      <origin xyz="0.01 2.84842e-15 -0.0184" rpy="-1.22707e-13 1.28231e-13 -6.73489e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -866,14 +930,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 2.85969e-15 -0.0184" rpy="-1.22718e-13 1.28222e-13 -6.73326e-14"/>
+      <origin xyz="0.01 2.84842e-15 -0.0184" rpy="-1.22707e-13 1.28231e-13 -6.73489e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_12 -->
     <visual>
-      <origin xyz="2.77556e-17 1.73472e-17 -0.00115" rpy="-1.5708 -6.40153e-17 -6.0049e-17"/>
+      <origin xyz="-2.77556e-17 4.33681e-18 -0.00115" rpy="-1.5708 -0 -4.16334e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -882,65 +946,65 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="2.77556e-17 1.73472e-17 -0.00115" rpy="-1.5708 -6.40153e-17 -6.0049e-17"/>
+      <origin xyz="-2.77556e-17 4.33681e-18 -0.00115" rpy="-1.5708 -0 -4.16334e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia_3 to femur_3 -->
+  <!-- Joint from tibia_3 to rightfemur_3 -->
   <joint name="femur_r3" type="revolute">
-    <origin xyz="-0.12216 -0.0444626 8.60423e-16" rpy="3.14159 -1.93599e-14 0.959931"/>
+    <origin xyz="-0.0798739 -0.0290717 6.17562e-16" rpy="3.14159 -1.93734e-14 0.959931"/>
     <parent link="tibia_3"/>
-    <child link="femur_3"/>
+    <child link="rightfemur_3"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="0" upper="2.18166"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip_3 to tibia_3 -->
+  <!-- Joint from righthip_3 to tibia_3 -->
   <joint name="tibia_r3" type="revolute">
-    <origin xyz="-0.0697954 -0.0234 0.0115" rpy="-1.5708 -1.5708 0"/>
-    <parent link="hip_3"/>
+    <origin xyz="-0.0597743 -0.0239706 0.0146" rpy="-1.56127 -1.5708 0"/>
+    <parent link="righthip_3"/>
     <child link="tibia_3"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-2.35367e-14" upper="1.22173"/>
+    <limit effort="10" velocity="6" lower="-1.82077e-14" upper="1.22173"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip_3 -->
+  <!-- Joint from lowerbody to righthip_3 -->
   <joint name="hip_r3" type="revolute">
-    <origin xyz="0.0312028 0.0796229 0.00709854" rpy="3.14159 2.09797e-15 -2.71479"/>
+    <origin xyz="0.0485111 0.0663725 0.0319385" rpy="-3.14159 -2.57421e-15 -2.70526"/>
     <parent link="lowerbody"/>
-    <child link="hip_3"/>
+    <child link="righthip_3"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <limit effort="10" velocity="6" lower="-0.533126" upper="0.514071"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Link hip_4 -->
-  <link name="hip_4">
+  <!-- Link righthip_4 -->
+  <link name="righthip_4">
     <inertial>
-      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+      <origin xyz="-0.0450964 -0.0030359 0.0243878" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.22477e-05" ixy="-1.84795e-06" ixz="-2.00048e-07" iyy="4.57606e-05" iyz="-4.29052e-07" izz="2.88839e-05"/>
     </inertial>
-    <!-- Part hip_4 -->
+    <!-- Part righthip_4 -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.62629e-18 2.24931e-14"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -5.30027e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_4_material">
+      <material name="righthip_4_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.62629e-18 2.24931e-14"/>
+      <origin xyz="-0.180312 -0.00671823 -0.21218" rpy="-1.5708 -5.30027e-16 0.00952765"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_13 -->
     <visual>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.044756 0.198794 0.00448461" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -949,14 +1013,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.044756 0.198794 0.00448461" rpy="1.58032 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_13 -->
     <visual>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0530452 0.00449482 0.0249" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -965,14 +1029,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.0530452 0.00449482 0.0249" rpy="-1.56127 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_13 -->
     <visual>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="-3.14159 -1.5708 0"/>
+      <origin xyz="-0.0532096 0.021744 0.0149" rpy="-3.13207 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -981,7 +1045,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="-3.14159 -1.5708 0"/>
+      <origin xyz="-0.0532096 0.021744 0.0149" rpy="-3.13207 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -990,13 +1054,13 @@
   <!-- Link tibia_4 -->
   <link name="tibia_4">
     <inertial>
-      <origin xyz="0.065 1.9082e-17 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="3.51253e-05" ixy="3.98817e-21" ixz="-2.43036e-21" iyy="0.000105742" iyz="7.42309e-21" izz="7.14134e-05"/>
+      <origin xyz="0.0409873 -2.77556e-17 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="2.78079e-05" ixy="-1.13622e-22" ixz="1.87489e-09" iyy="5.15258e-05" iyz="-1.34928e-21" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia_4 -->
     <visual>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -4.81887e-18 -3.73944e-17"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 2.77556e-17 -5.55112e-17"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -1005,38 +1069,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -4.81887e-18 -3.73944e-17"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 2.77556e-17 -5.55112e-17"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur_4 -->
-  <link name="femur_4">
+  <!-- Link rightfemur_4 -->
+  <link name="rightfemur_4">
     <inertial>
-      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+      <origin xyz="0.00668249 -0.0181489 -0.0256134" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112293" ixy="5.79279e-06" ixz="1.84967e-07" iyy="3.1167e-05" iyz="3.96574e-06" izz="0.000127739"/>
     </inertial>
-    <!-- Part femur_4 -->
+    <!-- Part rightfemur_4 -->
     <visual>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 7.10171e-14 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="3.14159 7.09433e-14 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_4_material">
+      <material name="rightfemur_4_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 7.10171e-14 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="3.14159 7.09433e-14 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_14 -->
     <visual>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56671e-13 -1.38427e-13"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56708e-13 -1.385e-13"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -1045,14 +1109,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56671e-13 -1.38427e-13"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.56708e-13 -1.385e-13"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_14 -->
     <visual>
-      <origin xyz="0.01 -3.81639e-16 -0.0184" rpy="7.0894e-14 1.24143e-13 8.98493e-14"/>
+      <origin xyz="0.01 -4.0766e-16 -0.0184" rpy="7.09433e-14 1.24067e-13 8.97893e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -1061,14 +1125,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 -3.81639e-16 -0.0184" rpy="7.0894e-14 1.24143e-13 8.98493e-14"/>
+      <origin xyz="0.01 -4.0766e-16 -0.0184" rpy="7.09433e-14 1.24067e-13 8.97893e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_14 -->
     <visual>
-      <origin xyz="0 -6.93889e-18 -0.00115" rpy="-1.5708 4.10379e-17 4.14286e-17"/>
+      <origin xyz="2.77556e-17 -2.38524e-18 -0.00115" rpy="-1.5708 -0 -8.32667e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1077,65 +1141,65 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 -6.93889e-18 -0.00115" rpy="-1.5708 4.10379e-17 4.14286e-17"/>
+      <origin xyz="2.77556e-17 -2.38524e-18 -0.00115" rpy="-1.5708 -0 -8.32667e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia_4 to femur_4 -->
+  <!-- Joint from tibia_4 to rightfemur_4 -->
   <joint name="femur_l1" type="revolute">
-    <origin xyz="0.13 -2.77556e-17 -3.1225e-17" rpy="-3.14159 1.19807e-14 2.53073"/>
+    <origin xyz="0.085 -1.38778e-17 0" rpy="-3.14159 1.18794e-14 2.53073"/>
     <parent link="tibia_4"/>
-    <child link="femur_4"/>
+    <child link="rightfemur_4"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-2.18166" upper="0"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip_4 to tibia_4 -->
+  <!-- Joint from righthip_4 to tibia_4 -->
   <joint name="tibia_l1" type="revolute">
-    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 -3.14159"/>
-    <parent link="hip_4"/>
+    <origin xyz="-0.0532205 0.022894 0.0149" rpy="-1.5708 1.22173 -3.13207"/>
+    <parent link="righthip_4"/>
     <child link="tibia_4"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-1.22173" upper="0"/>
+    <limit effort="10" velocity="6" lower="-1.22173" upper="1.11022e-15"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip_4 -->
+  <!-- Joint from lowerbody to righthip_4 -->
   <joint name="hip_l1" type="revolute">
-    <origin xyz="-0.134145 -0.107445 0.00709854" rpy="3.14159 5.2737e-16 0.668693"/>
+    <origin xyz="-0.129135 -0.119156 0.0319385" rpy="3.14159 7.46399e-15 0.678221"/>
     <parent link="lowerbody"/>
-    <child link="hip_4"/>
+    <child link="righthip_4"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
+    <limit effort="10" velocity="6" lower="-0.533126" upper="0.514071"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Link hip_5 -->
-  <link name="hip_5">
+  <!-- Link righthip_5 -->
+  <link name="righthip_5">
     <inertial>
-      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+      <origin xyz="-0.0451233 -0.00260611 0.0243878" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.22137e-05" ixy="-1.71888e-06" ixz="-2.04127e-07" iyy="4.57946e-05" iyz="-4.27126e-07" izz="2.88839e-05"/>
     </inertial>
-    <!-- Part hip_5 -->
+    <!-- Part righthip_5 -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.12323e-17 1.10913e-13"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 -6.12323e-17 1.14806e-13"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_5_material">
+      <material name="righthip_5_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 -6.12323e-17 1.10913e-13"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 -6.12323e-17 1.14806e-13"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_15 -->
     <visual>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.04286 0.199212 0.00448461" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -1144,14 +1208,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.04286 0.199212 0.00448461" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_15 -->
     <visual>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 0.005 0.0249" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -1160,14 +1224,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 0.005 0.0249" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_15 -->
     <visual>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <origin xyz="-0.053 0.02225 0.0149" rpy="3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1176,7 +1240,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <origin xyz="-0.053 0.02225 0.0149" rpy="3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1185,13 +1249,13 @@
   <!-- Link tibia_5 -->
   <link name="tibia_5">
     <inertial>
-      <origin xyz="0.065 2.42861e-17 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="3.51253e-05" ixy="2.58088e-21" ixz="-6.48363e-36" iyy="0.000105742" iyz="-1.04715e-35" izz="7.14134e-05"/>
+      <origin xyz="0.0409873 -3.46945e-18 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="2.78079e-05" ixy="1.30523e-21" ixz="1.87489e-09" iyy="5.15258e-05" iyz="8.35047e-27" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia_5 -->
     <visual>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 6.90995e-32 4.45385e-18"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 4.00593e-32 4.45385e-18"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -1200,33 +1264,33 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 6.90995e-32 4.45385e-18"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 4.00593e-32 4.45385e-18"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur_5 -->
-  <link name="femur_5">
+  <!-- Link rightfemur_5 -->
+  <link name="rightfemur_5">
     <inertial>
-      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+      <origin xyz="0.00668249 -0.0181489 -0.0256134" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112293" ixy="5.79279e-06" ixz="1.84967e-07" iyy="3.1167e-05" iyz="3.96574e-06" izz="0.000127739"/>
     </inertial>
-    <!-- Part femur_5 -->
+    <!-- Part rightfemur_5 -->
     <visual>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_5_material">
+      <material name="rightfemur_5_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="-3.14159 2.10749e-13 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_16 -->
@@ -1247,7 +1311,7 @@
     </collision>
     <!-- Part e07_mg996r_16 -->
     <visual>
-      <origin xyz="0.01 2.13024e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
+      <origin xyz="0.01 2.14412e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -1256,14 +1320,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 2.13024e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
+      <origin xyz="0.01 2.14412e-15 -0.0184" rpy="2.10749e-13 -8.5317e-14 2.94703e-13"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_16 -->
     <visual>
-      <origin xyz="0 -2.77556e-17 -0.00115" rpy="-1.5708 1.01384e-30 4.78344e-17"/>
+      <origin xyz="2.77556e-17 -1.38778e-17 -0.00115" rpy="-1.5708 1.57772e-30 4.78344e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1272,65 +1336,65 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 -2.77556e-17 -0.00115" rpy="-1.5708 1.01384e-30 4.78344e-17"/>
+      <origin xyz="2.77556e-17 -1.38778e-17 -0.00115" rpy="-1.5708 1.57772e-30 4.78344e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia_5 to femur_5 -->
+  <!-- Joint from tibia_5 to rightfemur_5 -->
   <joint name="femur_l2" type="revolute">
-    <origin xyz="0.13 0 3.46945e-17" rpy="3.14159 8.05484e-15 2.53073"/>
+    <origin xyz="0.085 -2.77556e-17 -9.51402e-18" rpy="3.14159 8.05484e-15 2.53073"/>
     <parent link="tibia_5"/>
-    <child link="femur_5"/>
+    <child link="rightfemur_5"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-2.18166" upper="0"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip_5 to tibia_5 -->
+  <!-- Joint from righthip_5 to tibia_5 -->
   <joint name="tibia_l2" type="revolute">
-    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 -3.14159"/>
-    <parent link="hip_5"/>
+    <origin xyz="-0.053 0.0234 0.0149" rpy="-1.5708 1.22173 -3.14159"/>
+    <parent link="righthip_5"/>
     <child link="tibia_5"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-1.22173" upper="1.11022e-15"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip_5 -->
+  <!-- Joint from lowerbody to righthip_5 -->
   <joint name="hip_l2" type="revolute">
-    <origin xyz="-0.140028 -0.0156824 0.00709854" rpy="-3.14159 -1.75355e-16 -8.38581e-15"/>
+    <origin xyz="-0.131169 -0.0202089 0.0319385" rpy="-3.14159 -1.75355e-16 -4.49293e-15"/>
     <parent link="lowerbody"/>
-    <child link="hip_5"/>
+    <child link="righthip_5"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Link hip_6 -->
-  <link name="hip_6">
+  <!-- Link righthip_6 -->
+  <link name="righthip_6">
     <inertial>
-      <origin xyz="-0.053201 -0.00249015 0.0194051" rpy="0 0 0"/>
-      <mass value="0.0877468"/>
-      <inertia ixx="3.23008e-05" ixy="-2.09149e-06" ixz="-8.86649e-07" iyy="5.43758e-05" iyz="-5.18399e-07" izz="3.74921e-05"/>
+      <origin xyz="-0.0451233 -0.00260611 0.0243878" rpy="0 0 0"/>
+      <mass value="0.0839378"/>
+      <inertia ixx="3.22137e-05" ixy="-1.71888e-06" ixz="-2.04127e-07" iyy="4.57946e-05" iyz="-4.27126e-07" izz="2.88839e-05"/>
     </inertial>
-    <!-- Part hip_6 -->
+    <!-- Part righthip_6 -->
     <visual>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 6.84438e-16 -3.31541e-14"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 9.66473e-16 -3.31402e-14"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
-      <material name="hip_6_material">
+      <material name="righthip_6_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.180836 -0.005 -0.23702" rpy="-1.5708 6.84438e-16 -3.31541e-14"/>
+      <origin xyz="-0.180368 -0.005 -0.21218" rpy="-1.5708 9.66473e-16 -3.31402e-14"/>
       <geometry>
-        <mesh filename="package://assets/hip.stl"/>
+        <mesh filename="package://assets/righthip.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_17 -->
     <visual>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.04286 0.199212 0.00448461" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -1339,14 +1403,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0526554 0.199212 -0.000915387" rpy="1.5708 -1.5708 0"/>
+      <origin xyz="-0.04286 0.199212 0.00448461" rpy="1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_17 -->
     <visual>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 0.005 0.0249" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -1355,14 +1419,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.005 0.0195" rpy="-1.5708 -1.5708 0"/>
+      <origin xyz="-0.053 0.005 0.0249" rpy="-1.5708 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_17 -->
     <visual>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <origin xyz="-0.053 0.02225 0.0149" rpy="3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1371,7 +1435,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0627954 0.02225 0.0095" rpy="3.14159 -1.5708 0"/>
+      <origin xyz="-0.053 0.02225 0.0149" rpy="3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1380,13 +1444,13 @@
   <!-- Link tibia_6 -->
   <link name="tibia_6">
     <inertial>
-      <origin xyz="0.065 -9.54098e-18 0.0229759" rpy="0 0 0"/>
-      <mass value="0.0478411"/>
-      <inertia ixx="3.51253e-05" ixy="6.51605e-22" ixz="1.6536e-21" iyy="0.000105742" iyz="-7.74112e-21" izz="7.14134e-05"/>
+      <origin xyz="0.0409873 -1.99493e-17 0.0247148" rpy="0 0 0"/>
+      <mass value="0.0352344"/>
+      <inertia ixx="2.78079e-05" ixy="-5.50592e-22" ixz="1.87489e-09" iyy="5.15258e-05" iyz="-1.34919e-21" izz="2.43045e-05"/>
     </inertial>
     <!-- Part tibia_6 -->
     <visual>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -6.36804e-18 -2.22749e-17"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 -0 -6.93889e-18"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
@@ -1395,38 +1459,38 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.260797 -0.005 -0.234601" rpy="-1.5708 -6.36804e-18 -2.22749e-17"/>
+      <origin xyz="-0.258999 -0.005 -0.230075" rpy="-1.5708 -0 -6.93889e-18"/>
       <geometry>
         <mesh filename="package://assets/tibia.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Link femur_6 -->
-  <link name="femur_6">
+  <!-- Link rightfemur_6 -->
+  <link name="rightfemur_6">
     <inertial>
-      <origin xyz="0.00696633 -0.0653774 -0.0247333" rpy="0 0 0"/>
-      <mass value="0.163879"/>
-      <inertia ixx="0.00105506" ixy="-3.57925e-05" ixz="1.23733e-07" iyy="3.99249e-05" iyz="1.42901e-05" izz="0.00107779"/>
+      <origin xyz="0.00668249 -0.0181489 -0.0256134" rpy="0 0 0"/>
+      <mass value="0.0986065"/>
+      <inertia ixx="0.000112293" ixy="5.79279e-06" ixz="1.84967e-07" iyy="3.1167e-05" iyz="3.96574e-06" izz="0.000127739"/>
     </inertial>
-    <!-- Part femur_6 -->
+    <!-- Part rightfemur_6 -->
     <visual>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 1.46841e-13 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="3.14159 1.46883e-13 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
-      <material name="femur_6_material">
+      <material name="rightfemur_6_material">
         <color rgba="0.25 0.25 0.25 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.244994 0.502112 -0.0184" rpy="3.14159 1.46841e-13 -1.5708"/>
+      <origin xyz="-0.251053 0.52013 -0.0184" rpy="3.14159 1.46883e-13 -1.5708"/>
       <geometry>
-        <mesh filename="package://assets/femur.stl"/>
+        <mesh filename="package://assets/rightfemur.stl"/>
       </geometry>
     </collision>
     <!-- Part idler_18 -->
     <visual>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70523e-13 -5.13794e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70586e-13 -5.13339e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
@@ -1435,14 +1499,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70523e-13 -5.13794e-14"/>
+      <origin xyz="-0.0104154 0.01014 0.175812" rpy="-3.14159 -1.70586e-13 -5.13339e-14"/>
       <geometry>
         <mesh filename="package://assets/idler.stl"/>
       </geometry>
     </collision>
     <!-- Part e07_mg996r_18 -->
     <visual>
-      <origin xyz="0.01 2.09555e-15 -0.0184" rpy="1.46866e-13 6.95944e-14 7.80493e-14"/>
+      <origin xyz="0.01 2.04003e-15 -0.0184" rpy="1.46883e-13 6.9611e-14 7.80626e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
@@ -1451,14 +1515,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.01 2.09555e-15 -0.0184" rpy="1.46866e-13 6.95944e-14 7.80493e-14"/>
+      <origin xyz="0.01 2.04003e-15 -0.0184" rpy="1.46883e-13 6.9611e-14 7.80626e-14"/>
       <geometry>
         <mesh filename="package://assets/e07_mg996r.stl"/>
       </geometry>
     </collision>
     <!-- Part servo_horns_18 -->
     <visual>
-      <origin xyz="0 6.93889e-18 -0.00115" rpy="-1.5708 1.56028e-17 -1.27132e-16"/>
+      <origin xyz="0 -3.46945e-18 -0.00115" rpy="-1.5708 -5.55112e-17 -5.55112e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
@@ -1467,35 +1531,35 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 6.93889e-18 -0.00115" rpy="-1.5708 1.56028e-17 -1.27132e-16"/>
+      <origin xyz="0 -3.46945e-18 -0.00115" rpy="-1.5708 -5.55112e-17 -5.55112e-17"/>
       <geometry>
         <mesh filename="package://assets/servo_horns.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from tibia_6 to femur_6 -->
+  <!-- Joint from tibia_6 to rightfemur_6 -->
   <joint name="femur_l3" type="revolute">
-    <origin xyz="0.13 0 0" rpy="3.14159 6.7833e-16 2.53073"/>
+    <origin xyz="0.085 0 0" rpy="3.14159 -3.33067e-16 2.53073"/>
     <parent link="tibia_6"/>
-    <child link="femur_6"/>
+    <child link="rightfemur_6"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-2.18166" upper="5.77316e-15"/>
+    <limit effort="10" velocity="6" lower="-2.18166" upper="5.32907e-15"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from hip_6 to tibia_6 -->
+  <!-- Joint from righthip_6 to tibia_6 -->
   <joint name="tibia_l3" type="revolute">
-    <origin xyz="-0.0627954 0.0234 0.0095" rpy="-1.5708 1.22173 3.14159"/>
-    <parent link="hip_6"/>
+    <origin xyz="-0.053 0.0234 0.0149" rpy="-1.5708 1.22173 3.14159"/>
+    <parent link="righthip_6"/>
     <child link="tibia_6"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="6" lower="-1.22173" upper="7.99361e-15"/>
+    <limit effort="10" velocity="6" lower="-1.22173" upper="2.66454e-15"/>
     <joint_properties friction="0.5"/>
   </joint>
-  <!-- Joint from lowerbody to hip_6 -->
+  <!-- Joint from lowerbody to righthip_6 -->
   <joint name="hip_l3" type="revolute">
-    <origin xyz="-0.138347 0.0804306 0.00709854" rpy="-3.14159 7.69581e-15 -0.436332"/>
+    <origin xyz="-0.125258 0.0663725 0.0319385" rpy="3.14159 3.08664e-15 -0.436332"/>
     <parent link="lowerbody"/>
-    <child link="hip_6"/>
+    <child link="righthip_6"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="6" lower="-0.523599" upper="0.523599"/>
     <joint_properties friction="0.5"/>

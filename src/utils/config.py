@@ -63,5 +63,6 @@ ROBOTS = {
         'ORIENTATION_REWARD_WEIGHT': 1,  # Reward for facing the direction of movement
         'ACTION_LIMIT': 0.2, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
         'INITIAL_MOMENTUM': 1.0,  # Scale of random initial momentum at start of episode (0.0 to 1.0
+        'START_POSITION': [0, 0, 0.2]
     },
 }
