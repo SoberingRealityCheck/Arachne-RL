@@ -13,6 +13,7 @@
 import os
 import time
 import math
+import argparse
 import numpy as np
 import pybullet as py
 import pybullet_data
@@ -29,17 +30,49 @@ import matplotlib.pyplot as plt
 from src.envs import env
 from src.utils import utils
 from src.utils.plotting_callback import LivePlottingCallback, LivePlottingCallbackNoGUI
+from src.utils.config import ROBOTS
 
 if __name__ == "__main__":
-
-    ## NO MORE HARD-CODED RENDER MODES! JUST SET IT AT RUNTIME!! YIPPEEEEE!!!!! ## 
-    user_render_mode_request = input("Run with GUI? (y/n): ").strip().lower()
-    if user_render_mode_request == 'y':
-        render_mode = 'human'
-    else:
-        render_mode = 'headless'
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description='Train a quadruped robot using PPO')
+    parser.add_argument('--robot', type=str, default='simple_quadruped',
+                        choices=list(ROBOTS.keys()),
+                        help='Robot to train (default: simple_quadruped)')
+    parser.add_argument('--gui', action='store_true',
+                        help='Run with PyBullet GUI (default: headless)')
+    parser.add_argument('--model', type=str, default=None,
+                        help='Specific model file to load for continued training (optional, default: create new model)')
+    parser.add_argument('--timesteps', type=int, default=2000000,
+                        help='Total training timesteps (default: 2000000)')
+    parser.add_argument('--target-speed', type=float, default=1.0,
+                        help='Target speed for the robot (default: 1.0)')
+    parser.add_argument('--learning-rate', type=float, default=0.0001,
+                        help='Learning rate for PPO (default: 0.0001)')
     
-    urdf_file, save_path, save_prefix = utils.select_robot(load_model=False)
+    args = parser.parse_args()
+
+    # Set render mode based on GUI flag
+    render_mode = 'human' if args.gui else 'headless'
+    
+    # Get robot configuration
+    robot_name = args.robot
+    if robot_name not in ROBOTS:
+        raise ValueError(f"Robot '{robot_name}' not found in configuration!")
+    
+    urdf_file = ROBOTS[robot_name]['urdf_file']
+    save_path = ROBOTS[robot_name]['save_path']
+    save_prefix = ROBOTS[robot_name]['save_prefix']
+    
+    print(f"\n{'='*50}")
+    print(f"Training Configuration:")
+    print(f"{'='*50}")
+    print(f"Robot: {robot_name}")
+    print(f"URDF: {urdf_file}")
+    print(f"Save Path: {save_path}")
+    print(f"Render Mode: {render_mode}")
+    print(f"Target Speed: {args.target_speed}")
+    print(f"Total Timesteps: {args.timesteps}")
+    print(f"{'='*50}\n")
 
     # Pass box parameters into the environment.
     min_z = env.get_min_z(urdf_file)
@@ -47,48 +80,30 @@ if __name__ == "__main__":
         render_mode=render_mode, 
         urdf_filename=urdf_file, 
         start_position=[0, 0, -min_z],
-        target_speed = 1,
+        target_speed=args.target_speed,
     )
-    use_existing_model = input("Use existing model if available? (y/n): ").strip().lower() == 'y'
-    if use_existing_model:
-        model_directory_list = os.listdir(save_path)
-        print("Model Directory List: ", model_directory_list)
     
-        # Handle case with no models found
-        if len(model_directory_list) == 0:
-            print("No saved models found. A new model will be created.")
-            use_existing_model = False
-        else:
-            best_model_name = model_directory_list[-1]
-            best_model_path = os.path.join(save_path, best_model_name)
-            
-            # Handle case with multiple models found
-            if len(model_directory_list) > 1:
-                print("Multiple saved models found. Would you like to use the latest one? (y/n): ")
-                choice = input().strip().lower()
-                if choice != 'y':
-                    print("Available models:")
-                    for idx, model_name in enumerate(model_directory_list):
-                        print(f"{idx + 1}: {model_name}")
-                    print("Enter the number of the model you want to use: ")
-                    selected_idx = int(input().strip()) - 1
-                    if 0 <= selected_idx < len(model_directory_list):
-                        best_model_name = model_directory_list[selected_idx]
-                        best_model_path = os.path.join(save_path, best_model_name)
-                    else:
-                        print("Invalid selection. Using the latest model.")
-
-            print(f"Loading existing model from {best_model_path}")
-            model = PPO.load(best_model_path, env=env, device='cpu')
+    # Handle model loading - if --model is specified, load it; otherwise create new
+    if args.model:
+        # Specific model file provided
+        model_path = args.model
+        if not os.path.exists(model_path):
+            # Try relative to save_path
+            model_path = os.path.join(save_path, model_path)
+        if not os.path.exists(model_path):
+            print(f"Error: Model file not found at {model_path}")
+            exit(1)
+        print(f"Loading model from {model_path}")
+        model = PPO.load(model_path, env=env, device='cpu')
     else:
         # Create new model with stable training parameters
-        # Lower learning rate to prevent KL divergence spikes
+        print("Creating new model...")
         model = PPO(
             "MlpPolicy", 
             env, 
             verbose=1, 
             n_steps=2048,
-            learning_rate=0.0001,  # Reduced from default 0.0003 for stability
+            learning_rate=args.learning_rate,
             batch_size=64,         # Smaller batches for better gradient estimates
             target_kl=0.015,       # Early stop if KL gets too high (prevents spikes)
             ent_coef=0.01,        # Slight exploration bonus
@@ -103,16 +118,14 @@ if __name__ == "__main__":
     
     # Add live plotting callback (different behavior for GUI vs headless)
     if render_mode == 'human':
-        # Disable live plotting to avoid crashes
         # With GUI: Show live updating plots
         plot_callback = LivePlottingCallback(
             plot_freq=2048,  # Update every iteration (n_steps)
             max_points=500,  # Keep last 500 data points for performance
             verbose=1
         )
-        print("\n Live plotting enabled! A plot window will open showing real-time metrics.")
-        print("   The plot updates every 2048 steps (~7 seconds at 290 fps)")
-        pass
+        print("\n✓ Live plotting enabled! A plot window will open showing real-time metrics.")
+        print("  The plot updates every 2048 steps (~7 seconds at 290 fps)")
     else:
         # Headless: Save plots periodically to files
         plot_callback = LivePlottingCallbackNoGUI(
@@ -121,16 +134,17 @@ if __name__ == "__main__":
             save_path='./training_plots/',
             verbose=1
         )
-        print("\n Plot saving enabled! Training plots will be saved to ./training_plots/")
-        print("   Plots saved every 50k steps")
+        print("\n✓ Plot saving enabled! Training plots will be saved to ./training_plots/")
+        print("  Plots saved every 50k steps")
     
     # Combine callbacks
     callback_list = CallbackList([checkpoint_callback, plot_callback])
 
+    print(f"\nStarting training for {args.timesteps} timesteps...")
+    print("Press Ctrl+C to stop training early.\n")
 
     try:
-        # Disable callback
-        model.learn(total_timesteps=1000000, callback=checkpoint_callback, progress_bar=True)  # This task may require longer training
+        model.learn(total_timesteps=args.timesteps, callback=callback_list, progress_bar=True)
     except KeyboardInterrupt:
         print("Training stopped by user.")
         reward_history = pd.read_csv(env.reward_history_filename)

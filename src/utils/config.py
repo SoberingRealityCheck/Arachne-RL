@@ -61,8 +61,8 @@ ROBOTS = {
         'HOME_POSITION_PENALTY_WEIGHT': .5,  # Penalize distance from home position
         'TILT_PENALTY_WEIGHT': 0.05,  # Penalize excessive tilting (pitch/roll)
         'ORIENTATION_REWARD_WEIGHT': 1,  # Reward for facing the direction of movement
-        'ACTION_LIMIT': 0.2, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
+        'ACTION_LIMIT': 0.5, # Proportional limit on joint angles. Should be between 0 and 1 # 0 is default and means no restriction. Otherwise smaller limit means more restriction.
         'INITIAL_MOMENTUM': 1.0,  # Scale of random initial momentum at start of episode (0.0 to 1.0
-        'START_POSITION': [0, 0, 0.2]
+        'START_POSITION': [0, 0, 0.1]
     },
 }

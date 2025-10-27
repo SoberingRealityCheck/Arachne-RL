@@ -312,7 +312,7 @@ class BaseEnv(gym.Env):
         target_angular_vel = self.target_turn * np.array([0,0,1])  # Yaw only
         target_z = self.start_position[2]
 
-        is_fallen = current_base_pos[2] < 0.05
+        is_fallen = current_base_pos[2] < 0.025
 
         # UPDATE 10/16/25: Reward logic now divided by taget velocity magnitude * .1 
         # in order to make the 'bell' shape of the reward function steeper. 
